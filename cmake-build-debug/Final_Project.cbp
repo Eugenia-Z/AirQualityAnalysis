@@ -57,6 +57,46 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/eugenia/Documents/CS5008/Final\ Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="testDateTimeAirQuality">
+				<Option output="/Users/eugenia/Documents/CS5008/Final Project/cmake-build-debug/testDateTimeAirQuality" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/eugenia/Documents/CS5008/Final Project/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/eugenia/Documents/CS5008/Final\ Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 testDateTimeAirQuality"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/eugenia/Documents/CS5008/Final\ Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/eugenia/Documents/CS5008/Final\ Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/eugenia/Documents/CS5008/Final\ Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="testDateTimeAirQuality/fast">
+				<Option output="/Users/eugenia/Documents/CS5008/Final Project/cmake-build-debug/testDateTimeAirQuality" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/eugenia/Documents/CS5008/Final Project/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/eugenia/Documents/CS5008/Final\ Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 testDateTimeAirQuality/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/eugenia/Documents/CS5008/Final\ Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/eugenia/Documents/CS5008/Final\ Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/eugenia/Documents/CS5008/Final\ Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="edit_cache">
 				<Option working_dir="/Users/eugenia/Documents/CS5008/Final Project/cmake-build-debug"/>
 				<Option type="4"/>
@@ -78,8 +118,36 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/eugenia/Documents/CS5008/Final Project/AirQuality.cpp">
+			<Option target="Final_Project"/>
+			<Option target="testDateTimeAirQuality"/>
+		</Unit>
+		<Unit filename="/Users/eugenia/Documents/CS5008/Final Project/AirQuality.h">
+			<Option target="Final_Project"/>
+			<Option target="testDateTimeAirQuality"/>
+		</Unit>
+		<Unit filename="/Users/eugenia/Documents/CS5008/Final Project/Date.cpp">
+			<Option target="Final_Project"/>
+			<Option target="testDateTimeAirQuality"/>
+		</Unit>
+		<Unit filename="/Users/eugenia/Documents/CS5008/Final Project/Date.h">
+			<Option target="Final_Project"/>
+			<Option target="testDateTimeAirQuality"/>
+		</Unit>
+		<Unit filename="/Users/eugenia/Documents/CS5008/Final Project/Time.cpp">
+			<Option target="Final_Project"/>
+			<Option target="testDateTimeAirQuality"/>
+		</Unit>
+		<Unit filename="/Users/eugenia/Documents/CS5008/Final Project/Time.h">
+			<Option target="Final_Project"/>
+			<Option target="testDateTimeAirQuality"/>
+		</Unit>
 		<Unit filename="/Users/eugenia/Documents/CS5008/Final Project/main.cpp">
 			<Option target="Final_Project"/>
+		</Unit>
+		<Unit filename="/Users/eugenia/Documents/CS5008/Final Project/testDateTimeAirQuality.cpp">
+			<Option target="Final_Project"/>
+			<Option target="testDateTimeAirQuality"/>
 		</Unit>
 		<Unit filename="/Users/eugenia/Documents/CS5008/Final Project/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

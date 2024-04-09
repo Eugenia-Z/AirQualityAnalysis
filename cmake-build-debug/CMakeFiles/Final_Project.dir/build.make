@@ -83,17 +83,81 @@ CMakeFiles/Final_Project.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Final_Project.dir/main.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/eugenia/Documents/CS5008/Final Project/main.cpp" -o CMakeFiles/Final_Project.dir/main.cpp.s
 
+CMakeFiles/Final_Project.dir/testDateTimeAirQuality.cpp.o: CMakeFiles/Final_Project.dir/flags.make
+CMakeFiles/Final_Project.dir/testDateTimeAirQuality.cpp.o: /Users/eugenia/Documents/CS5008/Final\ Project/testDateTimeAirQuality.cpp
+CMakeFiles/Final_Project.dir/testDateTimeAirQuality.cpp.o: CMakeFiles/Final_Project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/eugenia/Documents/CS5008/Final Project/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Final_Project.dir/testDateTimeAirQuality.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Final_Project.dir/testDateTimeAirQuality.cpp.o -MF CMakeFiles/Final_Project.dir/testDateTimeAirQuality.cpp.o.d -o CMakeFiles/Final_Project.dir/testDateTimeAirQuality.cpp.o -c "/Users/eugenia/Documents/CS5008/Final Project/testDateTimeAirQuality.cpp"
+
+CMakeFiles/Final_Project.dir/testDateTimeAirQuality.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Final_Project.dir/testDateTimeAirQuality.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/eugenia/Documents/CS5008/Final Project/testDateTimeAirQuality.cpp" > CMakeFiles/Final_Project.dir/testDateTimeAirQuality.cpp.i
+
+CMakeFiles/Final_Project.dir/testDateTimeAirQuality.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Final_Project.dir/testDateTimeAirQuality.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/eugenia/Documents/CS5008/Final Project/testDateTimeAirQuality.cpp" -o CMakeFiles/Final_Project.dir/testDateTimeAirQuality.cpp.s
+
+CMakeFiles/Final_Project.dir/Time.cpp.o: CMakeFiles/Final_Project.dir/flags.make
+CMakeFiles/Final_Project.dir/Time.cpp.o: /Users/eugenia/Documents/CS5008/Final\ Project/Time.cpp
+CMakeFiles/Final_Project.dir/Time.cpp.o: CMakeFiles/Final_Project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/eugenia/Documents/CS5008/Final Project/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Final_Project.dir/Time.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Final_Project.dir/Time.cpp.o -MF CMakeFiles/Final_Project.dir/Time.cpp.o.d -o CMakeFiles/Final_Project.dir/Time.cpp.o -c "/Users/eugenia/Documents/CS5008/Final Project/Time.cpp"
+
+CMakeFiles/Final_Project.dir/Time.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Final_Project.dir/Time.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/eugenia/Documents/CS5008/Final Project/Time.cpp" > CMakeFiles/Final_Project.dir/Time.cpp.i
+
+CMakeFiles/Final_Project.dir/Time.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Final_Project.dir/Time.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/eugenia/Documents/CS5008/Final Project/Time.cpp" -o CMakeFiles/Final_Project.dir/Time.cpp.s
+
+CMakeFiles/Final_Project.dir/Date.cpp.o: CMakeFiles/Final_Project.dir/flags.make
+CMakeFiles/Final_Project.dir/Date.cpp.o: /Users/eugenia/Documents/CS5008/Final\ Project/Date.cpp
+CMakeFiles/Final_Project.dir/Date.cpp.o: CMakeFiles/Final_Project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/eugenia/Documents/CS5008/Final Project/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Final_Project.dir/Date.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Final_Project.dir/Date.cpp.o -MF CMakeFiles/Final_Project.dir/Date.cpp.o.d -o CMakeFiles/Final_Project.dir/Date.cpp.o -c "/Users/eugenia/Documents/CS5008/Final Project/Date.cpp"
+
+CMakeFiles/Final_Project.dir/Date.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Final_Project.dir/Date.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/eugenia/Documents/CS5008/Final Project/Date.cpp" > CMakeFiles/Final_Project.dir/Date.cpp.i
+
+CMakeFiles/Final_Project.dir/Date.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Final_Project.dir/Date.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/eugenia/Documents/CS5008/Final Project/Date.cpp" -o CMakeFiles/Final_Project.dir/Date.cpp.s
+
+CMakeFiles/Final_Project.dir/AirQuality.cpp.o: CMakeFiles/Final_Project.dir/flags.make
+CMakeFiles/Final_Project.dir/AirQuality.cpp.o: /Users/eugenia/Documents/CS5008/Final\ Project/AirQuality.cpp
+CMakeFiles/Final_Project.dir/AirQuality.cpp.o: CMakeFiles/Final_Project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/eugenia/Documents/CS5008/Final Project/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Final_Project.dir/AirQuality.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Final_Project.dir/AirQuality.cpp.o -MF CMakeFiles/Final_Project.dir/AirQuality.cpp.o.d -o CMakeFiles/Final_Project.dir/AirQuality.cpp.o -c "/Users/eugenia/Documents/CS5008/Final Project/AirQuality.cpp"
+
+CMakeFiles/Final_Project.dir/AirQuality.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Final_Project.dir/AirQuality.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/eugenia/Documents/CS5008/Final Project/AirQuality.cpp" > CMakeFiles/Final_Project.dir/AirQuality.cpp.i
+
+CMakeFiles/Final_Project.dir/AirQuality.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Final_Project.dir/AirQuality.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/eugenia/Documents/CS5008/Final Project/AirQuality.cpp" -o CMakeFiles/Final_Project.dir/AirQuality.cpp.s
+
 # Object files for target Final_Project
 Final_Project_OBJECTS = \
-"CMakeFiles/Final_Project.dir/main.cpp.o"
+"CMakeFiles/Final_Project.dir/main.cpp.o" \
+"CMakeFiles/Final_Project.dir/testDateTimeAirQuality.cpp.o" \
+"CMakeFiles/Final_Project.dir/Time.cpp.o" \
+"CMakeFiles/Final_Project.dir/Date.cpp.o" \
+"CMakeFiles/Final_Project.dir/AirQuality.cpp.o"
 
 # External object files for target Final_Project
 Final_Project_EXTERNAL_OBJECTS =
 
 Final_Project: CMakeFiles/Final_Project.dir/main.cpp.o
+Final_Project: CMakeFiles/Final_Project.dir/testDateTimeAirQuality.cpp.o
+Final_Project: CMakeFiles/Final_Project.dir/Time.cpp.o
+Final_Project: CMakeFiles/Final_Project.dir/Date.cpp.o
+Final_Project: CMakeFiles/Final_Project.dir/AirQuality.cpp.o
 Final_Project: CMakeFiles/Final_Project.dir/build.make
 Final_Project: CMakeFiles/Final_Project.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/eugenia/Documents/CS5008/Final Project/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Final_Project"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/eugenia/Documents/CS5008/Final Project/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable Final_Project"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Final_Project.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -129,6 +129,100 @@ Final_Project/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final_Project.dir/build.make CMakeFiles/Final_Project.dir/build
 .PHONY : Final_Project/fast
 
+#=============================================================================
+# Target rules for targets named testDateTimeAirQuality
+
+# Build rule for target.
+testDateTimeAirQuality: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 testDateTimeAirQuality
+.PHONY : testDateTimeAirQuality
+
+# fast build rule for target.
+testDateTimeAirQuality/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testDateTimeAirQuality.dir/build.make CMakeFiles/testDateTimeAirQuality.dir/build
+.PHONY : testDateTimeAirQuality/fast
+
+AirQuality.o: AirQuality.cpp.o
+.PHONY : AirQuality.o
+
+# target to build an object file
+AirQuality.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final_Project.dir/build.make CMakeFiles/Final_Project.dir/AirQuality.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testDateTimeAirQuality.dir/build.make CMakeFiles/testDateTimeAirQuality.dir/AirQuality.cpp.o
+.PHONY : AirQuality.cpp.o
+
+AirQuality.i: AirQuality.cpp.i
+.PHONY : AirQuality.i
+
+# target to preprocess a source file
+AirQuality.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final_Project.dir/build.make CMakeFiles/Final_Project.dir/AirQuality.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testDateTimeAirQuality.dir/build.make CMakeFiles/testDateTimeAirQuality.dir/AirQuality.cpp.i
+.PHONY : AirQuality.cpp.i
+
+AirQuality.s: AirQuality.cpp.s
+.PHONY : AirQuality.s
+
+# target to generate assembly for a file
+AirQuality.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final_Project.dir/build.make CMakeFiles/Final_Project.dir/AirQuality.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testDateTimeAirQuality.dir/build.make CMakeFiles/testDateTimeAirQuality.dir/AirQuality.cpp.s
+.PHONY : AirQuality.cpp.s
+
+Date.o: Date.cpp.o
+.PHONY : Date.o
+
+# target to build an object file
+Date.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final_Project.dir/build.make CMakeFiles/Final_Project.dir/Date.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testDateTimeAirQuality.dir/build.make CMakeFiles/testDateTimeAirQuality.dir/Date.cpp.o
+.PHONY : Date.cpp.o
+
+Date.i: Date.cpp.i
+.PHONY : Date.i
+
+# target to preprocess a source file
+Date.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final_Project.dir/build.make CMakeFiles/Final_Project.dir/Date.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testDateTimeAirQuality.dir/build.make CMakeFiles/testDateTimeAirQuality.dir/Date.cpp.i
+.PHONY : Date.cpp.i
+
+Date.s: Date.cpp.s
+.PHONY : Date.s
+
+# target to generate assembly for a file
+Date.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final_Project.dir/build.make CMakeFiles/Final_Project.dir/Date.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testDateTimeAirQuality.dir/build.make CMakeFiles/testDateTimeAirQuality.dir/Date.cpp.s
+.PHONY : Date.cpp.s
+
+Time.o: Time.cpp.o
+.PHONY : Time.o
+
+# target to build an object file
+Time.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final_Project.dir/build.make CMakeFiles/Final_Project.dir/Time.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testDateTimeAirQuality.dir/build.make CMakeFiles/testDateTimeAirQuality.dir/Time.cpp.o
+.PHONY : Time.cpp.o
+
+Time.i: Time.cpp.i
+.PHONY : Time.i
+
+# target to preprocess a source file
+Time.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final_Project.dir/build.make CMakeFiles/Final_Project.dir/Time.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testDateTimeAirQuality.dir/build.make CMakeFiles/testDateTimeAirQuality.dir/Time.cpp.i
+.PHONY : Time.cpp.i
+
+Time.s: Time.cpp.s
+.PHONY : Time.s
+
+# target to generate assembly for a file
+Time.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final_Project.dir/build.make CMakeFiles/Final_Project.dir/Time.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testDateTimeAirQuality.dir/build.make CMakeFiles/testDateTimeAirQuality.dir/Time.cpp.s
+.PHONY : Time.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -153,6 +247,33 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final_Project.dir/build.make CMakeFiles/Final_Project.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+testDateTimeAirQuality.o: testDateTimeAirQuality.cpp.o
+.PHONY : testDateTimeAirQuality.o
+
+# target to build an object file
+testDateTimeAirQuality.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final_Project.dir/build.make CMakeFiles/Final_Project.dir/testDateTimeAirQuality.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testDateTimeAirQuality.dir/build.make CMakeFiles/testDateTimeAirQuality.dir/testDateTimeAirQuality.cpp.o
+.PHONY : testDateTimeAirQuality.cpp.o
+
+testDateTimeAirQuality.i: testDateTimeAirQuality.cpp.i
+.PHONY : testDateTimeAirQuality.i
+
+# target to preprocess a source file
+testDateTimeAirQuality.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final_Project.dir/build.make CMakeFiles/Final_Project.dir/testDateTimeAirQuality.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testDateTimeAirQuality.dir/build.make CMakeFiles/testDateTimeAirQuality.dir/testDateTimeAirQuality.cpp.i
+.PHONY : testDateTimeAirQuality.cpp.i
+
+testDateTimeAirQuality.s: testDateTimeAirQuality.cpp.s
+.PHONY : testDateTimeAirQuality.s
+
+# target to generate assembly for a file
+testDateTimeAirQuality.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Final_Project.dir/build.make CMakeFiles/Final_Project.dir/testDateTimeAirQuality.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testDateTimeAirQuality.dir/build.make CMakeFiles/testDateTimeAirQuality.dir/testDateTimeAirQuality.cpp.s
+.PHONY : testDateTimeAirQuality.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -162,9 +283,22 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Final_Project"
+	@echo "... testDateTimeAirQuality"
+	@echo "... AirQuality.o"
+	@echo "... AirQuality.i"
+	@echo "... AirQuality.s"
+	@echo "... Date.o"
+	@echo "... Date.i"
+	@echo "... Date.s"
+	@echo "... Time.o"
+	@echo "... Time.i"
+	@echo "... Time.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... testDateTimeAirQuality.o"
+	@echo "... testDateTimeAirQuality.i"
+	@echo "... testDateTimeAirQuality.s"
 .PHONY : help
 
 
