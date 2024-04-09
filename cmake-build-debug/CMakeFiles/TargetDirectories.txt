@@ -1,4 +1,0 @@
-/Users/guyunpei/Downloads/CS5008/finalProject/git/AirQualityAnalysis/cmake-build-debug/CMakeFiles/Final_Project.dir
-/Users/guyunpei/Downloads/CS5008/finalProject/git/AirQualityAnalysis/cmake-build-debug/CMakeFiles/testDateTimeAirQuality.dir
-/Users/guyunpei/Downloads/CS5008/finalProject/git/AirQualityAnalysis/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/guyunpei/Downloads/CS5008/finalProject/git/AirQualityAnalysis/cmake-build-debug/CMakeFiles/rebuild_cache.dir
