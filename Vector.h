@@ -23,12 +23,15 @@ public:
             return *this;
         }
 
-        Iterator operator++(int){
-            Iterator temp = *this;
-            ++m_ptr;
-            return temp;
-        }
+//        Iterator operator++(int){
+//            Iterator temp = *this;
+//            ++m_ptr;
+//            return temp;
+//        }
 
+        bool operator==(const Iterator& other) const{
+            return m_ptr == other.m_ptr;
+        }
         bool operator!=(const Iterator& other) const{
             return m_ptr != other.m_ptr;
         }
