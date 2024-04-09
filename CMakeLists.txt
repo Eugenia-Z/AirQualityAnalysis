@@ -3,4 +3,9 @@ project(Final_Project)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Final_Project main.cpp)
+add_executable(Final_Project
+        AirQuality.cpp
+        Date.cpp
+        Time.cpp
+        testVector.cpp
+Vector.cpp)
