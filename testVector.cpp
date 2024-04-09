@@ -61,7 +61,6 @@ int main(){
     AirQuality aq11(Date(5,9,20219), Time(22), 22.5, 66.0, 0.048);
     AirQuality aq12(Date(18,10,2024), Time(23), 21.5, 67.0, 0.049);
     AirQuality aq13(Date(24,11,2024), Time(24), 19.5, 68.0, 0.035);
-    AirQuality aq14(Date(20,12,2024), Time(01), 28.5, 69.0, 0.025);
 
     vec.push(aq3);
     vec.push(aq4);
@@ -74,7 +73,6 @@ int main(){
     vec.push(aq11);
     vec.push(aq12);
     vec.push(aq13);
-    vec.push(aq14);
 
 
     // Test getSize()

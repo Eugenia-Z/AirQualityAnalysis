@@ -10,7 +10,7 @@
 using namespace std;
 
 template<typename T>
-Vector<T>::Vector() : size(0), capacity(11), arr(new T[capacity]) {}
+Vector<T>::Vector() : size(0), capacity(10), arr(new T[capacity]) {}
 
 template<typename T>
 Vector<T>:: ~Vector(){
