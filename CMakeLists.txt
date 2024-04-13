@@ -3,19 +3,6 @@ project(AirQualityAnalysis_0410_gyp_2)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(AirQualityAnalysis_0410_gyp_2 main.cpp
-        Time.cpp
-        Time.h
-        Date.cpp
-        Date.h
-        AirQuality.cpp
-        AirQuality.h
-        MonthlyData.cpp
-        MonthlyData.h
-        Vector.cpp
-        Vector.h
-        )
-
 add_executable(main main.cpp
         Time.cpp
         Time.h

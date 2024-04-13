@@ -10,7 +10,6 @@ public:
     Date();
     Date(int yy, int mm, int dd);
     Date(const string& dateStr);
-
     Date getDate() const;
     int getDay() const;
     int getMonth() const;
