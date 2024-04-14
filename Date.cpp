@@ -1,18 +1,24 @@
 #include "Date.h"
 #include <string>
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
 Date::Date(){
-    day=1;
-    month=1;
     year=2000;
+    month=1;
+    day=1;
 }
-Date::Date(int dd, int mm, int yy){
+Date::Date(int yy, int mm, int dd){
     day=dd;
     month=mm;
     year=yy;
+}
+Date::Date(const string& dateStr) {
+    istringstream iss(dateStr);
+    char delimiter;
+    iss >> year >> delimiter >> month >> delimiter >> day;
 }
 Date Date::getDate() const{
     return *this;
@@ -20,7 +26,7 @@ Date Date::getDate() const{
 int Date::getDay() const{
     return day;
 }
-void Date::setDate(int dd, int mm, int yy)
+void Date::setDate(int yy, int mm, int dd)
 {
     day=dd;
     month=mm;
@@ -46,28 +52,30 @@ bool Date::sameMonth(Date otherDay)const{
 }
 void Date::printDate()
 {
-    cout<<"Date:  " << day <<" "<< month<<" "<<year<<'\n';
+    cout<<"Date: " << day <<"/"<< month<<"/"<<year<<'\n';
+}
+bool Date::operator==(const Date& otherDate) const {
+    return (day == otherDate.getDay() && month == otherDate.getMonth() && year == otherDate.getYear());
 }
 istream & operator >> ( istream & input, Date & D )
 {
-    string stringdd, stringmm, stringyy;
-    int dd,mm, yy;
+    string stringyy, stringmm, stringdd;
+    int yy,mm,dd;
 
-    getline(input, stringdd, '/');
+    getline(input, stringyy, '/');
     getline(input, stringmm,'/');
-    getline(input, stringyy,' ');
+    getline(input, stringdd);
 
     dd=stoi(stringdd);
     mm=stoi(stringmm);
     yy=stoi(stringyy);
 
-    D.setDate(dd, mm, yy);
+    D.setDate(yy, mm, dd);
 
     return input;
 }
-
 ostream & operator <<( ostream & os, const Date & D )
 {
-    os << "Date: " << D.getDay() << "/" << D.getMonth() << "/" <<D.getYear();
+    os << D.getYear()<< "/" << D.getMonth() << "/" <<D.getDay();
     return os;
 }

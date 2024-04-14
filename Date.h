@@ -8,18 +8,20 @@ class Date
 {
 public:
     Date();
-    Date(int dd, int mm, int yy);
+    Date(int yy, int mm, int dd);
+    Date(const string& dateStr);
     Date getDate() const;
     int getDay() const;
     int getMonth() const;
     int getYear() const;
 
-    void setDate(int dd, int mm, int yy);
+    void setDate(int yy, int mm, int dd);
     void setDay(int dd);
     void setMonth(int mm);
     void setYear(int yy);
 
     bool sameMonth(Date otherDay)const;
+    bool operator==(const Date& otherDate) const;
 
     void printDate();
 
