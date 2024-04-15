@@ -5,7 +5,8 @@
 #include "AirQuality.h"
 #include "Time.h"
 
-class MonthlyData {
+class MonthlyData
+{
 private:
     VectorLinkedList<AirQuality> data;
     Date thisMonth;
@@ -21,8 +22,8 @@ private:
     VectorLinkedList<AirQuality> higherThanAvgTemp() const;
     VectorLinkedList<AirQuality> higherThanAvgRH() const;
     VectorLinkedList<AirQuality> higherThanAvgAH() const;
-    void display(VectorLinkedList<AirQuality>& v, const string& s) const;
-    AirQuality* search(const Date& date, const Time& time) const;
+    void display(VectorLinkedList<AirQuality> &v, const string &s) const;
+    AirQuality *search(const Date &date, const Time &time) const;
 
 public:
     // Constructor and destructor
@@ -30,10 +31,10 @@ public:
     ~MonthlyData();
 
     bool isEmpty() const;
-    void push(const AirQuality& a);
+    void push(const AirQuality &a);
 
     // Setters
-    void setMonth(const Date& d);
+    void setMonth(const Date &d);
 
     // Getters
     int getSize() const;
@@ -49,8 +50,7 @@ public:
     void displayHigherThanAvgTemp() const;
     void displayHigherThanAvgRH() const;
     void displayHigherThanAvgAH() const;
-    void displayDataAt(const Date& date, const Time& time) const;
+    void displayDataAt(const Date &date, const Time &time) const;
 };
 
-
-#endif //FINAL_PROJECT_MONTHLYDATA_H
+#endif // FINAL_PROJECT_MONTHLYDATA_H

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.27)
-project(Final_Project)
+project(AirQualityAnalysis_0410_gyp_2)
 
 set(CMAKE_CXX_STANDARD 17)
 
