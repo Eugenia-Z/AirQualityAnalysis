@@ -4,40 +4,6 @@ project(AirQualityAnalysis_0410_gyp_2)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(main main.cpp
-        Time.cpp
-        Time.h
-        Date.cpp
-        Date.h
+        VectorLinkedList.cpp
         AirQuality.cpp
-        AirQuality.h
-        MonthlyData.cpp
-        MonthlyData.h
-        Vector.cpp
-        Vector.h
-)
-
-add_executable(testDateTimeAirQuality testDateTimeAirQuality.cpp
-        Time.cpp
-        Time.h
-        Date.cpp
-        Date.h
-        AirQuality.cpp
-        AirQuality.h
-        MonthlyData.cpp
-        MonthlyData.h
-        Vector.cpp
-        Vector.h
-)
-
-add_executable(testVectorandMonthlyData testVectorandMonthlyData.cpp
-        Time.cpp
-        Time.h
-        Date.cpp
-        Date.h
-        AirQuality.cpp
-        AirQuality.h
-        MonthlyData.cpp
-        MonthlyData.h
-        Vector.cpp
-        Vector.h
-)
+        MonthlyData.cpp)

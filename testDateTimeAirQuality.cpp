@@ -4,33 +4,37 @@
 #include "AirQuality.h"
 using namespace std;
 
-int main() {
+int main()
+{
     //----------------test Time class------------------
-    //create instances
+    // create instances
     Time t1;
-    Time t2(11,11,11);
-    Time t3(11,11,11);
+    Time t2(11, 11, 11);
+    Time t3(11, 11, 11);
 
-    //test cin and cout
+    // test cin and cout
     cout << "Enter time (hh:mm:ss): ";
     cin >> t1;
     cout << "Time entered: " << t1 << std::endl;
 
     // Testing the operator==()
-    if (t2 == t3) {
+    if (t2 == t3)
+    {
         cout << "t1 and t2 are equal." << std::endl;
-    } else {
+    }
+    else
+    {
         cout << "t1 and t2 are not equal." << std::endl;
     }
 
     //----------------test Date class------------------
-    Date d1(2004,12,31);
-    Date d2(2004,12,18);
-    Date d3(2004,12,2);
-    Date d4(2004,12,2);
+    Date d1(2004, 12, 31);
+    Date d2(2004, 12, 18);
+    Date d3(2004, 12, 2);
+    Date d4(2004, 12, 2);
     Date d5;
 
-    //Test setDay(), setMonth(), setYear() functions
+    // Test setDay(), setMonth(), setYear() functions
     d1.setDay(10);
     d1.setMonth(4);
     d1.setYear(2004);
@@ -43,15 +47,18 @@ int main() {
     cout << "Year: " << d1.getYear() << endl;
 
     // Test sameMonth() function
-    if (d2.sameMonth(d3)){
-        cout <<"d2 is in the same month as d3. \n";
+    if (d2.sameMonth(d3))
+    {
+        cout << "d2 is in the same month as d3. \n";
     }
-    if (!d1.sameMonth(d3)){
-        cout <<"d1 is NOT in the same month as d3. \n";
+    if (!d1.sameMonth(d3))
+    {
+        cout << "d1 is NOT in the same month as d3. \n";
     }
 
     // Test operator==() function
-    if (d3 == d4) {
+    if (d3 == d4)
+    {
         cout << "d3 and d4 is the same day.\n";
     }
 
