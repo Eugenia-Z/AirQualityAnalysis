@@ -20,6 +20,11 @@ public:
     void setSecond(int ss);
     void setTime(int hh, int mm, int ss);
     bool operator==(const Time& otherTime) const;
+    bool operator<(const Time& otherTime)const;
+    bool operator>(const Time& otherTime)const;
+//    bool operator<=(const Time& otherTime)const;
+//    bool operator>=(const Time& otherTime)const;
+//    bool operator!=(const Time& otherTime)const;
 
 private:
     int hour;

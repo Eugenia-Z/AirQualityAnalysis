@@ -22,6 +22,11 @@ public:
 
     bool sameMonth(Date otherDay)const;
     bool operator==(const Date& otherDate) const;
+    bool operator<(const Date& otherDate)const;
+    bool operator>(const Date& otherDate)const;
+    bool operator<=(const Date& otherDate)const;
+    bool operator>=(const Date& otherDate)const;
+    bool operator!=(const Date& otherDate)const;
 
     void printDate();
 

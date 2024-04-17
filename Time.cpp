@@ -78,3 +78,19 @@ ostream & operator <<( ostream & os, const Time & T )
 bool Time::operator==(const Time& otherTime) const {
     return hour == otherTime.getHour();
 }
+bool Time::operator>(const Time& otherTime) const {
+    if (hour > otherTime.getHour()) {
+        return true;
+    } else if (hour == otherTime.getHour()) {
+        if (minute > otherTime.getMinute()) {
+            return true;
+        } else if (minute == otherTime.getMinute()) {
+            return second > otherTime.getSecond();
+        }
+    }
+    return false;
+}
+
+bool Time::operator<(const Time& otherTime) const {
+    return !(*this > otherTime) && !(*this == otherTime);
+}
