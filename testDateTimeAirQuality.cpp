@@ -11,6 +11,7 @@ int main()
     Time t1;
     Time t2(11, 11, 11);
     Time t3(11, 11, 11);
+    Time t4(22,00,00);
 
     // test cin and cout
     cout << "Enter time (hh:mm:ss): ";
@@ -18,13 +19,24 @@ int main()
     cout << "Time entered: " << t1 << std::endl;
 
     // Testing the operator==()
-    if (t2 == t3)
-    {
+    if (t2 == t3){
         cout << "t1 and t2 are equal." << std::endl;
-    }
-    else
-    {
+    }else{
         cout << "t1 and t2 are not equal." << std::endl;
+    }
+
+    // testing the operator >
+    if (t4 > t3){
+        cout << "t4 is later than t3." << std::endl;
+    }else{
+        cout << "t4 is not later than t3." << std::endl;
+    }
+
+    // testing the operator <
+    if (t4 < t3){
+        cout << "t4 is not later than t3." << std::endl;
+    }else{
+        cout << "t4 is later than t3." << std::endl;
     }
 
     //----------------test Date class------------------
@@ -60,6 +72,18 @@ int main()
     if (d3 == d4)
     {
         cout << "d3 and d4 is the same day.\n";
+    }
+
+    // Test comparison
+    if(d2>d3){
+        cout << "d2 is later than d3"<< endl;
+    }else{
+        cout << "d2 is not later than d3"<< endl;
+    }
+    if(d3<d2){
+        cout << "d2 is earlier than d3"<< endl;
+    }else{
+        cout << "d2 is not earlier than d3"<< endl;
     }
 
     // Test operator<< and operator>> functions
