@@ -222,3 +222,10 @@ void MonthlyData::display(VectorLinkedList<AirQuality> &v, const string &s) cons
         cout << (*it).getDate() << " " << (*it).getTime() << endl;
     }
 }
+
+void MonthlyData::displayMonthlyData(){
+    for (VectorLinkedList<AirQuality>::Iterator it = data.begin(); it != data.end(); ++it)
+    {
+        cout << (*it).getDate() << " " << (*it).getTime() << " " << (*it).getTemp() << " " << (*it).getRH() << " " << (*it).getAH() << endl;
+    }
+}

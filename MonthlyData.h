@@ -51,6 +51,7 @@ public:
     void displayHigherThanAvgRH() const;
     void displayHigherThanAvgAH() const;
     void displayDataAt(const Date &date, const Time &time) const;
+    void displayMonthlyData();
 };
 
 #endif // FINAL_PROJECT_MONTHLYDATA_H

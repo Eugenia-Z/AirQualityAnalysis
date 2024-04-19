@@ -48,7 +48,7 @@ void Date::setYear(int yy){
     year=yy;
 }
 bool Date::sameMonth(Date otherDay)const{
-    return (month==otherDay.getMonth());
+    return (month==otherDay.getMonth() && year==otherDay.getYear());
 }
 void Date::printDate()
 {
@@ -56,6 +56,28 @@ void Date::printDate()
 }
 bool Date::operator==(const Date& otherDate) const {
     return (day == otherDate.getDay() && month == otherDate.getMonth() && year == otherDate.getYear());
+}
+bool Date::operator<(const Date& otherDate)const{
+    if((year<otherDate.year)||
+       (year==otherDate.year && month<otherDate.month)||
+       (year==otherDate.year && month==otherDate.month && day<otherDate.day))
+    {
+        return true;
+    }else{
+        return false;
+    }
+}
+bool Date::operator>(const Date& otherDate)const{
+    return !(*this<=otherDate);
+}
+bool Date::operator<=(const Date& otherDate)const{
+    return(*this<otherDate||*this==otherDate);
+}
+bool Date::operator>=(const Date& otherDate)const{
+    return !(*this<otherDate);
+}
+bool Date::operator!=(const Date& otherDate)const{
+    return !(*this==otherDate);
 }
 istream & operator >> ( istream & input, Date & D )
 {
