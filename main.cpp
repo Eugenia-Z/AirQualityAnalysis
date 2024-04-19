@@ -79,25 +79,39 @@ int main(){
             case 4: {
                 cout << "You are trying to know the air quality data at the specific time of a day. \n";
                 Date date = processInputDate();
-                Time time = processInputTime();
-                Date firstDay = Date(2004,3,10);
-                if(date < Date(2004,3,10) || (date==Date(2004,3,10) && time <Time(18,0,0))||
-                date > Date(2005,4,4) || (date==Date(2005,4,4) && time>Time(14,0,0))||
-                time >Time(24,0,0) || time < Time(0,0,0)
-                ){
-                    cout << "Input date and time is out of range, please try again" << endl;
-                }else {
-                    time.setMinute(0);
-                    time.setSecond(0);
-                    cout << "Loading data for " << date.getYear() << "/" << date.getMonth() << "/" << date.getDay() <<
-                         " " << time.getHour() << ":" << time.getMinute() << ":" << time.getSecond() << endl;
-                    int i;
-                    for (i = 0; i < numMonths; i++) {
-                        if (months[i].getMonth().sameMonth(date)) {
-                            break;
-                        }
+//                Date firstDay = Date(2004,3,10);
+//                if(date < Date(2004,3,10) || (date==Date(2004,3,10) && time <Time(18,0,0))||
+//                date > Date(2005,4,4) || (date==Date(2005,4,4) && time>Time(14,0,0))||
+//                time >Time(24,0,0) || time < Time(0,0,0)
+//                ){
+//                    cout << "Input date and time is out of range, please try again" << endl;
+//                }else {
+//                    time.setMinute(0);
+//                    time.setSecond(0);
+//                    cout << "Loading data for " << date.getYear() << "/" << date.getMonth() << "/" << date.getDay() <<
+//                         " " << time.getHour() << ":" << time.getMinute() << ":" << time.getSecond() << endl;
+//                    int i;
+//                    for (i = 0; i < numMonths; i++) {
+//                        if (months[i].getMonth().sameMonth(date)) {
+//                            break;
+//                        }
+//                    }
+//                    months[i].displayDataAt(date, time);
+//                }
+
+                int i;
+                for (i = 0; i < analyzer.getNumMonths(); i++) {
+                    if (analyzer.getMonths()[i].getMonth().sameMonth(date)) {
+                        Time time = processInputTime();
+                        time.setMinute(0);
+                        time.setSecond(0);
+                        cout << "Loading data for " << date << " " << time << endl;
+                        months[i].displayDataAt(date, time);
+                        break;
                     }
-                    months[i].displayDataAt(date, time);
+                }
+                if (i == analyzer.getNumMonths()) {
+                    cout << "Invalid date" << endl;
                 }
                 break;
             }

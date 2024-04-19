@@ -11,6 +11,7 @@
 using namespace std;
 
 int main(){
+
     AirQualityAnalyzer analyzer;
     //test runAnalysis, readCSV, and doubleValidator
     analyzer.runAnalysis("../AirQualityUCI.csv");

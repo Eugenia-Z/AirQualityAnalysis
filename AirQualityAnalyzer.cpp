@@ -75,13 +75,11 @@ void AirQualityAnalyzer::readCSV(const std::string& fileName) {
         AirQuality air(date, time, temperature, rh, ah);
 
         // store the data into MonthlyData instance
-       if (monthsIndex >= 0 && months[monthsIndex].getMonth().sameMonth(date)){// if the date belongs to this month, store it to the month
+       if (monthsIndex >= 0 && months[monthsIndex].getMonth().sameMonth(date)) {// if the date belongs to this month, store it to the month
             months[monthsIndex].push(air);
-        }
-        else{ // if the date does not belong to current month
-            monthsIndex++;
+        } else { // if the date does not belong to current month
 //            cout << monthsIndex << " month data has been loaded."<< endl;
-            months[monthsIndex].setMonth(Date(date.getYear(),date.getMonth(),1));
+            months[++monthsIndex].setMonth(date);
             months[monthsIndex].push(air);
         }
     }
@@ -130,7 +128,7 @@ void AirQualityAnalyzer::printMonth(int i){
         throw "month index out of range";
     }
     cout << "------------monthly data ------------" << endl;
-    months[i].displayMonthlyData();
+    months[i].print();
 }
 
 //bool dateValidator(const string& dateString) {
