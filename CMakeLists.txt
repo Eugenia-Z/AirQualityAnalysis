@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.27)
-project(AirQualityAnalysis_0410_gyp_2)
+project(AirQualityAnalysis)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -8,19 +8,21 @@ add_executable(main main.cpp
         AirQuality.cpp
         MonthlyData.cpp
         Time.cpp
-        Time.h
         Date.cpp
-        Date.h
-        AirQuality.cpp
-        AirQuality.h
-)
+        AirQualityAnalyzer.cpp)
 
 add_executable(testDateTimeAirQuality testDateTimeAirQuality.cpp
         Time.cpp
-        Time.h
         Date.cpp
-        Date.h
         AirQuality.cpp
-        AirQuality.h
 )
 
+add_executable(testAirQualityAnalyzer testAirQualityAnalyzer.cpp)
+
+add_executable(testMonthlyData testMonthlyData.cpp
+        VectorLinkedList.cpp
+        AirQuality.cpp
+        MonthlyData.cpp
+        Time.cpp
+        Date.cpp
+        AirQualityAnalyzer.cpp)

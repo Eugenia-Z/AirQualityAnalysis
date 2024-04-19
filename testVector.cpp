@@ -10,10 +10,8 @@ using namespace std;
 int main(){
     // Create an empty VectorLinkedList
     VectorLinkedList<AirQuality> vec;
-    MonthlyData m;
     // Test isEmpty() on an empty VectorLinkedList AND MonthlyData
     cout << "Is vectorLinkedList empty? " << (vec.empty()? "Yes": "No") << endl;
-    cout << "Is VectorLinkedList empty? " << (m.isEmpty()? "Yes": "No") << endl;
 
     // Create some AirQuality instances
     AirQuality aq0(Date(12,12,2004), Time (12,0,0), 25.5, 60.0, 0.044);
@@ -26,27 +24,6 @@ int main(){
     vec.push_back(aq1);
     vec.push_back(aq2);
 //    vec.push(aq3);
-
-    // Test push(), getMax(), getAvg()
-    m.push(aq0);
-    m.push(aq1);
-    m.push(aq2);
-    cout << m.isEmpty() << endl;
-    cout << m.getSize() << endl;
-    cout << "Max T: " << m.getMaxTemp() << endl;
-    cout << "Max RH: " << m.getMaxRH() << endl;
-    cout << "Max AH: " << m.getMaxAH() << endl;
-    cout << "Avg T: " << m.getAvgTemp() << endl;
-    cout << "Avg RH: " << m.getAvgRH() << endl;
-    cout << "Avg AH: " << m.getAvgAH() << endl;
-    // Test search()
-    m.displayDataAt(Date(12,12,2004), Time (12,0,0));
-    m.displayDataAt(Date(12,13,2004), Time (12,0,0));
-    // test higher()
-    m.displayHigherThanAvgTemp();
-    m.displayHigherThanAvgRH();
-    m.displayHigherThanAvgAH();
-
 
     // Test empty() on a non-empty VectorLinkedList
     cout << "Is VectorLinkedList empty? " << (vec.empty()? "Yes": "No") << endl;
