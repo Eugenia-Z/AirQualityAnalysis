@@ -76,9 +76,9 @@ int main(){
                 }
                 break;
             }
-//            case 4: {
-//                cout << "You are trying to know the air quality data at the specific time of a day. \n";
-//                Date date = processInputDate();
+            case 4: {
+                cout << "You are trying to know the air quality data at the specific time of a day. \n";
+                Date date = processInputDate();
 //                Time time = processInputTime();
 //                Date firstDay = Date(2004,3,10);
 //                if(date < Date(2004,3,10) || (date==Date(2004,3,10) && time <Time(18,0,0))||
@@ -100,7 +100,22 @@ int main(){
 //                    months[i].displayDataAt(date, time);
 //                }
 //                break;
-//            }
+                int i;
+                for (i = 0; i < analyzer.getNumMonths(); i++) {
+                    if (analyzer.getMonths()[i].getMonth().sameMonth(date)) {
+                        Time time = processInputTime();
+                        time.setMinute(0);
+                        time.setSecond(0);
+                        cout << "Loading data for " << date << " " << time << endl;
+                        months[i].displayDataAt(date, time);
+                        break;
+                    }
+                }
+                if (i == analyzer.getNumMonths()) {
+                    cout << "Invalid date" << endl;
+                }
+                break;
+            }
             case 5: {
                 cout << "You are trying to know the highest temperature for a month. \n";
                 int index;

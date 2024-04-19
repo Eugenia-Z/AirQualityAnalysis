@@ -1,231 +1,192 @@
 #include "MonthlyData.h"
 
-MonthlyData::MonthlyData() = default;
+/* Construct an empty MonthlyData instance.*/
+MonthlyData::MonthlyData() {
+    size = 0;
+    tempSize = 0;
+    RHSize = 0;
+    AHSize = 0;
+    sumTemp = 0;
+    sumRH = 0;
+    sumAH = 0;
+    maxTemp = 0;
+    maxRH = 0;
+    maxAH = 0;
+    thisMonth = Date(0, 0, 0);
+}
 
-MonthlyData::~MonthlyData() = default;
-
-bool MonthlyData::isEmpty() const
-{
+/* Check if the MonthlyData is empty.*/
+bool MonthlyData::isEmpty() const {
     return size == 0;
 }
 
-void MonthlyData::push(const AirQuality &a)
-{
+/**
+ * Add a new air quality data point to the data set
+ * Update all relevant the statistics at the same time
+ */
+void MonthlyData::push(const AirQuality &a) {
     data.push_back(a);
     size++;
     sumTemp += a.getTemp();
+    tempSize += a.getTemp() == 0.0 ? 0 : 1;
     sumRH += a.getRH();
+    RHSize += a.getRH() == 0.0 ? 0 : 1;
     sumAH += a.getAH();
+    AHSize += a.getAH() == 0.0 ? 0 : 1;
     maxTemp = maxTemp > a.getTemp() ? maxTemp : a.getTemp();
     maxRH = maxRH > a.getRH() ? maxRH : a.getRH();
     maxAH = maxAH > a.getAH() ? maxAH : a.getAH();
 }
 
-void MonthlyData::setMonth(const Date &d)
-{
-    thisMonth = d;
+void MonthlyData::setMonth(const Date &date) {
+    thisMonth = date;
 }
 
-int MonthlyData::getSize() const
-{
+int MonthlyData::getSize() const {
     return size;
 }
 
-Date MonthlyData::getMonth() const
-{
+Date MonthlyData::getMonth() const {
     return thisMonth;
 }
 
-double MonthlyData::getAvgTemp() const
-{
-    return sumTemp / size;
-    //    if (!isEmpty() && sumTemp == 0) {
-    //        double total = 0;
-    //        VectorLinkedList<AirQuality>::Iterator it;
-    //        for (it = data.begin(); it != data.end(); ++it) {
-    //            total += (*it).getTemp();
-    //        }
-    //        sumTemp = total / size;
-    //    }
-    //    return abgTemp;
+double MonthlyData::getAvgTemp() const {
+    return tempSize == 0 ? 0.0 : sumTemp / tempSize;
 }
 
-double MonthlyData::getAvgRH() const
-{
-    return sumRH / size;
-    //    if (!isEmpty() && avgRH == 0) {
-    //        double total = 0;
-    //        VectorLinkedList<AirQuality>::Iterator it;
-    //        for (it = data.begin(); it != data.end(); ++it) {
-    //            total += (*it).getRH();
-    //        }
-    //        avgRH = total / size;
-    //    }
-    //    return avgRH;
+double MonthlyData::getAvgRH() const {
+    return RHSize == 0 ? 0.0 : sumRH / RHSize;
 }
 
-double MonthlyData::getAvgAH() const
-{
-    return sumAH / size;
-    //    if (!isEmpty() && avgAH == 0) {
-    //        double total = 0;
-    //        VectorLinkedList<AirQuality>::Iterator it;
-    //        for (it = data.begin(); it != data.end(); ++it) {
-    //            total += (*it).getAH();
-    //        }
-    //        avgAH = total / size;
-    //    }
-    //    return avgAH;
+double MonthlyData::getAvgAH() const {
+    return AHSize == 0 ? 0.0 : sumAH / AHSize;
 }
 
-double MonthlyData::getMaxTemp() const
-{
+double MonthlyData::getMaxTemp() const {
     return maxTemp;
-    //    if (!isEmpty() && maxTemp == 0) {
-    //        double tmp = 0;
-    //        VectorLinkedList<AirQuality>::Iterator it;
-    //        for (it = data.begin(); it != data.end(); ++it) {
-    //            if ((*it).getTemp() > tmp)
-    //                tmp = (*it).getTemp();
-    //        }
-    //        maxTemp = tmp;
-    //    }
-    //    return maxTemp;
 }
 
-double MonthlyData::getMaxRH() const
-{
+double MonthlyData::getMaxRH() const {
     return maxRH;
-    //    if (!isEmpty() && maxRH == 0) {
-    //        double tmp = 0;
-    //        VectorLinkedList<AirQuality>::Iterator it;
-    //        for (it = data.begin(); it != data.end(); ++it) {
-    //            if ((*it).getRH() > tmp)
-    //                tmp = (*it).getRH();
-    //        }
-    //        maxRH = tmp;
-    //    }
-    //    return maxRH;
 }
 
-double MonthlyData::getMaxAH() const
-{
+double MonthlyData::getMaxAH() const {
     return maxAH;
-    //    if (!isEmpty() && maxAH == 0) {
-    //        double tmp = 0;
-    //        VectorLinkedList<AirQuality>::Iterator it;
-    //        for (it = data.begin(); it != data.end(); ++it) {
-    //            if ((*it).getAH() > tmp)
-    //                tmp = (*it).getAH();
-    //        }
-    //        maxAH = tmp;
-    //    }
-    //    return maxAH;
 }
 
-AirQuality *MonthlyData::search(const Date &date, const Time &time) const
-{
-    AirQuality *air = nullptr;
-    for (VectorLinkedList<AirQuality>::Iterator it = data.begin(); it != data.end(); ++it)
-    {
-        if ((*it).getDate() == date && (*it).getTime() == time)
-        {
-            air = &(*it);
-        }
-    }
-    //    if (air == nullptr) {
-    //        cout << "Date and time not found" << endl;
-    //    }
-    return air;
+/* Prints all air quality data in the data set. */
+void MonthlyData::print() const {
+    for (auto & a : data)
+        cout << a;
 }
-void MonthlyData::displayDataAt(const Date &date, const Time &time) const
-{
-    AirQuality *a = search(date, time);
-    if (a == nullptr)
-    {
-        cout << "Data for the date and time not found" << endl;
-    }
+
+/* Print a summary of statistics for this month. */
+void MonthlyData::printSummary() const {
+    cout << endl;
+    cout << size << " data found for " << thisMonth.getYear() << "/" << thisMonth.getMonth() << endl;
+    cout << "__________________________________" << endl;
+    cout << tempSize << " valid temperature data" << endl;
+    cout << "Average Temperature: " << getAvgTemp() << endl;
+    cout << "Maximum Temperature: " << getMaxTemp() << endl;
+    cout << "__________________________________" << endl;
+    cout << RHSize << " valid relative humidity data" << endl;
+    cout << "Average Relative Humidity: " << getAvgRH() << endl;
+    cout << "Maximum Relative Humidity: " << getMaxRH() << endl;
+    cout << "__________________________________" << endl;
+    cout << AHSize << " valid absolute humidity data" << endl;
+    cout << "Average Absolute Humidity: " << getAvgAH() << endl;
+    cout << "Maximum Absolute Humidity: " << getMaxAH() << endl;
+}
+
+/* Display data at a specific date and time. */
+void MonthlyData::displayDataAt(const Date &date, const Time &time) const {
+    AirQuality *airQuality = search(date, time);
+    if (airQuality == nullptr)
+        cout << "Data not found" << endl;  // Print an error message if no matched data found
     else
-    {
-        cout << "Temperature: " << a->getTemp() << endl;
-        cout << "Relative Humidity: " << a->getRH() << endl;
-        cout << "Absolute Humidity: " << a->getAH() << endl;
+        cout << *airQuality;
+}
+
+/* Display data points with temperature higher than the average. */
+void MonthlyData::displayHigherThanAvgTemp() const {
+    VectorLinkedList<AirQuality> v = higherThanAvgTemp();
+    if (!v.empty()) {
+        cout << "Dates and times when the temperature"
+             << " is higher than the average:" << endl;
+        for (auto & aq : v)
+            cout << aq.getDate() << " " << aq.getTime() << " " << aq.getTemp() << endl;
+    } else {
+        cout << "No valid data found for this month" << endl;
     }
 }
 
-void MonthlyData::displayHigherThanAvgTemp() const
-{
-    VectorLinkedList<AirQuality> v = higherThanAvgTemp();
-    display(v, "temperature");
-}
-
-void MonthlyData::displayHigherThanAvgRH() const
-{
+/* Display data points with relative humidity higher than the average. */
+void MonthlyData::displayHigherThanAvgRH() const {
     VectorLinkedList<AirQuality> v = higherThanAvgRH();
-    display(v, "relative humidity");
+    if (!v.empty()) {
+        cout << "Dates and times when the relative humidity"
+             << " is higher than the average:" << endl;
+        for (auto & aq : v)
+            cout << aq.getDate() << " " << aq.getTime() << " " << aq.getRH() << endl;
+    } else {
+        cout << "No valid data found for this month" << endl;
+    }
 }
 
-void MonthlyData::displayHigherThanAvgAH() const
-{
+/* Display data points with absolute humidity higher than the average. */
+void MonthlyData::displayHigherThanAvgAH() const {
     VectorLinkedList<AirQuality> v = higherThanAvgAH();
-    display(v, "absolute humidity");
+    if (!v.empty()) {
+        cout << "Dates and times when the absolute humidity"
+             << " is higher than the average:" << endl;
+        for (auto & aq : v)
+            cout << aq.getDate() << " " << aq.getTime() << " " << aq.getAH() << endl;
+    } else {
+        cout << "No valid data found for this month" << endl;
+    }
 }
 
-VectorLinkedList<AirQuality> MonthlyData::higherThanAvgTemp() const
-{
+/* Search for air quality data given a specific date and time. */
+AirQuality* MonthlyData::search(const Date &date, const Time &time) const {
+    AirQuality *airQuality = nullptr;
+    for (auto & aq : data) {
+        if (aq.getDate() == date && aq.getTime() == time)
+            airQuality = &aq;
+    }
+    return airQuality;
+}
+
+/* Retrieve data points with temperatures higher than the average. */
+VectorLinkedList<AirQuality> MonthlyData::higherThanAvgTemp() const {
     VectorLinkedList<AirQuality> higher;
     double avgT = getAvgTemp();
-    for (VectorLinkedList<AirQuality>::Iterator it = data.begin(); it != data.end(); ++it)
-    {
-        if ((*it).getTemp() > avgT)
-        {
-            higher.push_back(*it);
-        }
+    for (auto & it : data) {
+        if (it.getTemp() > avgT)
+            higher.push_back(it);
     }
     return higher;
 }
 
-VectorLinkedList<AirQuality> MonthlyData::higherThanAvgRH() const
-{
+/* Retrieve data points with relative humidity higher than the average. */
+VectorLinkedList<AirQuality> MonthlyData::higherThanAvgRH() const {
     VectorLinkedList<AirQuality> higher;
     double avgRH = getAvgRH();
-    for (VectorLinkedList<AirQuality>::Iterator it = data.begin(); it != data.end(); ++it)
-    {
-        if ((*it).getRH() > avgRH)
-        {
-            higher.push_back(*it);
-        }
+    for (auto & it : data) {
+        if (it.getRH() > avgRH)
+            higher.push_back(it);
     }
     return higher;
 }
 
-VectorLinkedList<AirQuality> MonthlyData::higherThanAvgAH() const
-{
+/* Retrieve data points with absolute humidity higher than the average. */
+VectorLinkedList<AirQuality> MonthlyData::higherThanAvgAH() const {
     VectorLinkedList<AirQuality> higher;
     double avgAH = getAvgAH();
-    for (VectorLinkedList<AirQuality>::Iterator it = data.begin(); it != data.end(); ++it)
-    {
-        if ((*it).getAH() > avgAH)
-        {
-            higher.push_back(*it);
-        }
+    for (auto & it : data) {
+        if (it.getAH() > avgAH)
+            higher.push_back(it);
     }
     return higher;
 }
 
-void MonthlyData::display(VectorLinkedList<AirQuality> &v, const string &s) const
-{
-    cout << "In this month,  dates and times when the " << s
-         << " is higher than the average " << s << " as follows: " << endl;
-    for (VectorLinkedList<AirQuality>::Iterator it = v.begin(); it != v.end(); ++it)
-    {
-        cout << (*it).getDate() << " " << (*it).getTime() << endl;
-    }
-}
 
-void MonthlyData::displayMonthlyData(){
-    for (VectorLinkedList<AirQuality>::Iterator it = data.begin(); it != data.end(); ++it)
-    {
-        cout << (*it).getDate() << " " << (*it).getTime() << " " << (*it).getTemp() << " " << (*it).getRH() << " " << (*it).getAH() << endl;
-    }
-}
