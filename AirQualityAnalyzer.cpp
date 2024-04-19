@@ -132,36 +132,53 @@ void AirQualityAnalyzer::printMonth(int i){
     cout << "------------monthly data ------------" << endl;
     months[i].displayMonthlyData();
 }
+int AirQualityAnalyzer::processInputMonth(){
+    string input;
+    cout << "Please enter the month (yyyy/mm): ";
+    cin >> input;
+    string month_input = input + "/1";
 
-//bool dateValidator(const string& dateString) {
-//    stringstream ss(dateString);
-//    int year, month, day;
-//    char separator;
-//    ss >> year >> separator >> month >> separator >> day;
-//    if (ss.fail() || ss.peek() != EOF) {
-////        cerr << "Invalid date format: " << dateString << endl;
-//        return false;
-//    }
-//    if (year < 0 || month < 1 || month > 12 || day < 1 || day > 31) {
-////        cerr << "Invalid date value: " << dateString << endl;
-//        return false;
-//    }
-//    return true;
-//}
-//
+    istringstream iss(month_input);
+    int year, month, day;
+    char delimiter;
+    iss >> year >> delimiter >> month >> delimiter >> day;
+    Date findDay(year,month,day);
 
-//bool timeValidator(const string& timeString) {
-//    stringstream ss(timeString);
-//    int hour, minute, second;
-//    char separator;
-//    ss >> hour >> separator >> minute >> separator >> second;
-//    if (ss.fail() || ss.peek() != EOF) {
-////        cerr << "Invalid time format: " << timeString << endl;
-//        return false;
-//    }
-//    if (hour < 0 || hour > 23 || minute < 0 || minute > 59 || second < 0 || second > 59) {
-////        cerr << "Invalid time value: " << timeString << endl;
-//        return false;
-//    }
-//    return true;
-//}
+    cout << "Loading data for "<< findDay.getYear() << "/" << findDay.getMonth() << endl;
+
+    int i;
+    for (i = 0; i < NUM_MONTHS; i++){
+        if (months[i].getMonth().sameMonth(findDay)){
+            return i;
+        }
+    }
+    cin.ignore();
+    return -1;
+}
+double AirQualityAnalyzer::getMonthAvgTemp(int index){
+    return months[index].getAvgTemp();
+}
+double AirQualityAnalyzer::getMonthAvgRH(int index){
+    return months[index].getAvgRH();
+}
+double AirQualityAnalyzer::getMonthAvgAH(int index){
+    return months[index].getAvgAH();
+}
+double AirQualityAnalyzer::getMonthMaxTemp(int index){
+    return months[index].getMaxTemp();
+}
+double AirQualityAnalyzer::getMonthMaxRH(int index){
+    return months[index].getMaxRH();
+}
+double AirQualityAnalyzer::getMonthMaxAH(int index){
+    return months[index].getMaxAH();
+}
+void AirQualityAnalyzer::displayMonthHigherThanAvgTemp(int index){
+    months[index].displayHigherThanAvgTemp();
+}
+void AirQualityAnalyzer::displayMonthHigherThanAvgRH(int index){
+    months[index].displayHigherThanAvgRH();
+}
+void AirQualityAnalyzer::displayMonthHigherThanAvgAH(int index){
+    months[index].displayHigherThanAvgAH();
+}
