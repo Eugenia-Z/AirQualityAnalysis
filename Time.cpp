@@ -57,17 +57,20 @@ void Time::setSecond(int ss)
 }
 istream & operator >>( istream & input, Time & T )
 {
-    string time,sHH,sMM;
-    int position, hh, mm;
+    string time,sHH,sMM,sSS;
+    int position, hh, mm, ss;
 
     getline(input,sHH,':');
-    getline(input,sMM,'\n');
+    getline(input,sMM,':');
+    getline(input, sSS);
 
     hh=stoi(sHH);
     mm=stoi(sMM);
+    ss=stoi(sSS);
 
     T.setHour(hh);
     T.setMinute(mm);
+    T.setSecond(ss);
     return input;
 }
 ostream & operator <<( ostream & os, const Time & T )
