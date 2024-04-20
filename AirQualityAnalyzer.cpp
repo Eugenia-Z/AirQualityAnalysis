@@ -4,18 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include <iomanip>
-
-MonthlyData* AirQualityAnalyzer::getMonths() {
-    return months;
-}
-int AirQualityAnalyzer::getNumMonths(){
-    return NUM_MONTHS;
-}
-
-void AirQualityAnalyzer::runAnalysis(const std::string& fileName) {
-    readCSV(fileName);
-}
-
+//read input
 void AirQualityAnalyzer::readCSV(const std::string& fileName) {
     ifstream inFile;
     string line;
@@ -51,8 +40,6 @@ void AirQualityAnalyzer::readCSV(const std::string& fileName) {
             temperature = stod(temperatureString);
         }else{
             temperature =NULL;
-//            cout << "invalid temperature:" << temperatureString<< " modified to:"<<temperature<< endl;
-//            continue;
         }
 
         getline(ss, rhString, ',');
@@ -60,8 +47,6 @@ void AirQualityAnalyzer::readCSV(const std::string& fileName) {
             rh = stod(rhString);
         }else{
             rh =NULL;
-//            cout << "invalid rh:" << rhString<< " modified to:"<<rh<< endl;
-//            continue;
         }
 
         getline(ss, ahString, ',');
@@ -69,23 +54,20 @@ void AirQualityAnalyzer::readCSV(const std::string& fileName) {
             ah = stod(ahString);
         }else{
             ah =NULL;
-//            cout << "invalid ah:" << ahString<< " modified to:"<<ah<< endl;
-//            continue;
         }
         AirQuality air(date, time, temperature, rh, ah);
 
         // store the data into MonthlyData instance
-       if (monthsIndex >= 0 && months[monthsIndex].getMonth().sameMonth(date)) {// if the date belongs to this month, store it to the month
+        if (monthsIndex >= 0 && months[monthsIndex].getMonth().sameMonth(date)) {// if the date belongs to this month, store it to the month
             months[monthsIndex].push(air);
         } else { // if the date does not belong to current month
-//            cout << monthsIndex << " month data has been loaded."<< endl;
             months[++monthsIndex].setMonth(date);
             months[monthsIndex].push(air);
         }
     }
     inFile.close();
 }
-
+// validate double value in input
 bool AirQualityAnalyzer::doubleValidator(const string& doubleString){
     stringstream ss(doubleString);
     double value;
@@ -95,6 +77,7 @@ bool AirQualityAnalyzer::doubleValidator(const string& doubleString){
     }
     return true;
 }
+//get and print data of all the average
 void AirQualityAnalyzer::printAllAvg()const{
     cout << "------------avg temperature------------" << endl;
     for(int i=0; i<NUM_MONTHS;i++){
@@ -109,6 +92,7 @@ void AirQualityAnalyzer::printAllAvg()const{
         cout << i << " month: "<< fixed <<setprecision(2)<< months[i].getAvgAH() << endl;
     }
 }
+//get and print data of all the max
 void AirQualityAnalyzer::printAllMax()const{
     cout << "------------max temperature------------" << endl;
     for(int i=0; i<NUM_MONTHS;i++){
@@ -123,6 +107,7 @@ void AirQualityAnalyzer::printAllMax()const{
         cout << i << " month: "<< fixed <<setprecision(2)<< months[i].getMaxAH() << endl;
     }
 }
+//get and print data of a month
 void AirQualityAnalyzer::printMonth(int i){
     if(i>=NUM_MONTHS){
         throw "month index out of range";
@@ -130,36 +115,86 @@ void AirQualityAnalyzer::printMonth(int i){
     cout << "------------monthly data ------------" << endl;
     months[i].print();
 }
+//deal with user input
+int AirQualityAnalyzer::processInputMonth(){
+    string input;
+    cout << "Please enter the month (yyyy/mm): ";
+    cin >> input;
+    string month_input = input + "/1";
 
-//bool dateValidator(const string& dateString) {
-//    stringstream ss(dateString);
-//    int year, month, day;
-//    char separator;
-//    ss >> year >> separator >> month >> separator >> day;
-//    if (ss.fail() || ss.peek() != EOF) {
-////        cerr << "Invalid date format: " << dateString << endl;
-//        return false;
-//    }
-//    if (year < 0 || month < 1 || month > 12 || day < 1 || day > 31) {
-////        cerr << "Invalid date value: " << dateString << endl;
-//        return false;
-//    }
-//    return true;
-//}
-//
+    istringstream iss(month_input);
+    int year, month, day;
+    char delimiter;
+    iss >> year >> delimiter >> month >> delimiter >> day;
+    Date findDay(year,month,day);
 
-//bool timeValidator(const string& timeString) {
-//    stringstream ss(timeString);
-//    int hour, minute, second;
-//    char separator;
-//    ss >> hour >> separator >> minute >> separator >> second;
-//    if (ss.fail() || ss.peek() != EOF) {
-////        cerr << "Invalid time format: " << timeString << endl;
-//        return false;
-//    }
-//    if (hour < 0 || hour > 23 || minute < 0 || minute > 59 || second < 0 || second > 59) {
-////        cerr << "Invalid time value: " << timeString << endl;
-//        return false;
-//    }
-//    return true;
-//}
+    cout << "Loading data for "<< findDay.getYear() << "/" << findDay.getMonth() << endl;
+
+    int i;
+    for (i = 0; i < NUM_MONTHS; i++){
+        if (months[i].getMonth().sameMonth(findDay)){
+            return i;
+        }
+    }
+    cin.ignore();
+    return -1;
+}
+// deal with input a date
+Date AirQualityAnalyzer::processInputDate(){
+    Date findDay;
+    cout << "Please enter the date (yyyy/mm/dd):";
+    cin >> findDay;
+    return findDay;
+}
+// deal with input a time
+Time AirQualityAnalyzer::processInputTime(){
+    Time findTime;
+    cout << "Please enter the time (hh:mm:ss):";
+    cin >> findTime;
+    return findTime;
+}
+//get and print data
+double AirQualityAnalyzer::getMonthAvgTemp(int index){
+    return months[index].getAvgTemp();
+}
+double AirQualityAnalyzer::getMonthAvgRH(int index){
+    return months[index].getAvgRH();
+}
+double AirQualityAnalyzer::getMonthAvgAH(int index){
+    return months[index].getAvgAH();
+}
+double AirQualityAnalyzer::getMonthMaxTemp(int index){
+    return months[index].getMaxTemp();
+}
+double AirQualityAnalyzer::getMonthMaxRH(int index){
+    return months[index].getMaxRH();
+}
+double AirQualityAnalyzer::getMonthMaxAH(int index){
+    return months[index].getMaxAH();
+}
+void AirQualityAnalyzer::displayMonthHigherThanAvgTemp(int index){
+    months[index].displayHigherThanAvgTemp();
+}
+void AirQualityAnalyzer::displayMonthHigherThanAvgRH(int index){
+    months[index].displayHigherThanAvgRH();
+}
+void AirQualityAnalyzer::displayMonthHigherThanAvgAH(int index){
+    months[index].displayHigherThanAvgAH();
+}
+void AirQualityAnalyzer::displayDataAtDate(){
+    Date date = processInputDate();
+    int i;
+    for (i = 0; i < NUM_MONTHS; i++) {
+        if (months[i].getMonth().sameMonth(date)) {
+            Time time = processInputTime();
+            time.setMinute(0);
+            time.setSecond(0);
+            cout << "Loading data for " << date << " " << time << endl;
+            months[i].displayDataAt(date, time);
+            break;
+        }
+    }
+    if (i == NUM_MONTHS) {
+        cout << "Input Date and Time Invalid." << endl;
+    }
+}
