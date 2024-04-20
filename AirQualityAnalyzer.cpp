@@ -4,6 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include <iomanip>
+
 // read input
 void AirQualityAnalyzer::readCSV(const std::string &fileName)
 {
