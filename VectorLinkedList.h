@@ -54,7 +54,12 @@ public:
     void clear();
     Iterator begin() const;
     Iterator end() const;
+
+    // [] operator overload
+    T& operator[](size_t index);
 };
+
+
 
 
 #endif //FP_VECTORLINKEDLIST_H

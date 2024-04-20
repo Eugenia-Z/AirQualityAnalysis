@@ -22,9 +22,6 @@ public:
     bool operator==(const Time& otherTime) const;
     bool operator<(const Time& otherTime)const;
     bool operator>(const Time& otherTime)const;
-//    bool operator<=(const Time& otherTime)const;
-//    bool operator>=(const Time& otherTime)const;
-//    bool operator!=(const Time& otherTime)const;
 
 private:
     int hour;

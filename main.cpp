@@ -211,6 +211,7 @@ Time processInputTime(){
     cin >> findTime;
     return findTime;
 }
+
 // deal with input a month. return -1 when the month data is out of range.
 int processInputMonth(const MonthlyData* months, int numMonths){
     string input;

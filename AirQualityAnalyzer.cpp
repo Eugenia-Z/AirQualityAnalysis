@@ -69,8 +69,7 @@ void AirQualityAnalyzer::readCSV(const std::string& fileName) {
             ah = stod(ahString);
         }else{
             ah =NULL;
-//            cout << "invalid ah:" << ahString<< " modified to:"<<ah<< endl;
-//            continue;
+
         }
         AirQuality air(date, time, temperature, rh, ah);
 
@@ -80,7 +79,6 @@ void AirQualityAnalyzer::readCSV(const std::string& fileName) {
         }
         else{ // if the date does not belong to current month
             monthsIndex++;
-//            cout << monthsIndex << " month data has been loaded."<< endl;
             months[monthsIndex].setMonth(Date(date.getYear(),date.getMonth(),1));
             months[monthsIndex].push(air);
         }
@@ -132,36 +130,3 @@ void AirQualityAnalyzer::printMonth(int i){
     cout << "------------monthly data ------------" << endl;
     months[i].displayMonthlyData();
 }
-
-//bool dateValidator(const string& dateString) {
-//    stringstream ss(dateString);
-//    int year, month, day;
-//    char separator;
-//    ss >> year >> separator >> month >> separator >> day;
-//    if (ss.fail() || ss.peek() != EOF) {
-////        cerr << "Invalid date format: " << dateString << endl;
-//        return false;
-//    }
-//    if (year < 0 || month < 1 || month > 12 || day < 1 || day > 31) {
-////        cerr << "Invalid date value: " << dateString << endl;
-//        return false;
-//    }
-//    return true;
-//}
-//
-
-//bool timeValidator(const string& timeString) {
-//    stringstream ss(timeString);
-//    int hour, minute, second;
-//    char separator;
-//    ss >> hour >> separator >> minute >> separator >> second;
-//    if (ss.fail() || ss.peek() != EOF) {
-////        cerr << "Invalid time format: " << timeString << endl;
-//        return false;
-//    }
-//    if (hour < 0 || hour > 23 || minute < 0 || minute > 59 || second < 0 || second > 59) {
-////        cerr << "Invalid time value: " << timeString << endl;
-//        return false;
-//    }
-//    return true;
-//}

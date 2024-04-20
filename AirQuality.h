@@ -8,7 +8,6 @@ using namespace std;
 #define FINAL_PROJECT_AIRQUALITY_H
 
 class AirQuality {
-
 public:
     //default constructor
     AirQuality();

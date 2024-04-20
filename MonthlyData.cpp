@@ -36,91 +36,33 @@ Date MonthlyData::getMonth() const
     return thisMonth;
 }
 
-double MonthlyData::getAvgTemp() const
-{
+double MonthlyData::getAvgTemp() const {
     return sumTemp / size;
-    //    if (!isEmpty() && sumTemp == 0) {
-    //        double total = 0;
-    //        VectorLinkedList<AirQuality>::Iterator it;
-    //        for (it = data.begin(); it != data.end(); ++it) {
-    //            total += (*it).getTemp();
-    //        }
-    //        sumTemp = total / size;
-    //    }
-    //    return abgTemp;
 }
 
 double MonthlyData::getAvgRH() const
 {
     return sumRH / size;
-    //    if (!isEmpty() && avgRH == 0) {
-    //        double total = 0;
-    //        VectorLinkedList<AirQuality>::Iterator it;
-    //        for (it = data.begin(); it != data.end(); ++it) {
-    //            total += (*it).getRH();
-    //        }
-    //        avgRH = total / size;
-    //    }
-    //    return avgRH;
 }
 
 double MonthlyData::getAvgAH() const
 {
     return sumAH / size;
-    //    if (!isEmpty() && avgAH == 0) {
-    //        double total = 0;
-    //        VectorLinkedList<AirQuality>::Iterator it;
-    //        for (it = data.begin(); it != data.end(); ++it) {
-    //            total += (*it).getAH();
-    //        }
-    //        avgAH = total / size;
-    //    }
-    //    return avgAH;
 }
 
 double MonthlyData::getMaxTemp() const
 {
     return maxTemp;
-    //    if (!isEmpty() && maxTemp == 0) {
-    //        double tmp = 0;
-    //        VectorLinkedList<AirQuality>::Iterator it;
-    //        for (it = data.begin(); it != data.end(); ++it) {
-    //            if ((*it).getTemp() > tmp)
-    //                tmp = (*it).getTemp();
-    //        }
-    //        maxTemp = tmp;
-    //    }
-    //    return maxTemp;
 }
 
 double MonthlyData::getMaxRH() const
 {
     return maxRH;
-    //    if (!isEmpty() && maxRH == 0) {
-    //        double tmp = 0;
-    //        VectorLinkedList<AirQuality>::Iterator it;
-    //        for (it = data.begin(); it != data.end(); ++it) {
-    //            if ((*it).getRH() > tmp)
-    //                tmp = (*it).getRH();
-    //        }
-    //        maxRH = tmp;
-    //    }
-    //    return maxRH;
 }
 
 double MonthlyData::getMaxAH() const
 {
     return maxAH;
-    //    if (!isEmpty() && maxAH == 0) {
-    //        double tmp = 0;
-    //        VectorLinkedList<AirQuality>::Iterator it;
-    //        for (it = data.begin(); it != data.end(); ++it) {
-    //            if ((*it).getAH() > tmp)
-    //                tmp = (*it).getAH();
-    //        }
-    //        maxAH = tmp;
-    //    }
-    //    return maxAH;
 }
 
 AirQuality *MonthlyData::search(const Date &date, const Time &time) const
@@ -133,11 +75,9 @@ AirQuality *MonthlyData::search(const Date &date, const Time &time) const
             air = &(*it);
         }
     }
-    //    if (air == nullptr) {
-    //        cout << "Date and time not found" << endl;
-    //    }
     return air;
 }
+
 void MonthlyData::displayDataAt(const Date &date, const Time &time) const
 {
     AirQuality *a = search(date, time);

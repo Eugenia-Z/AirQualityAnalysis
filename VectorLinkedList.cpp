@@ -4,6 +4,7 @@
 
 #include "VectorLinkedList.h"
 #include "AirQuality.h"
+using namespace std;
 
 template<typename T>
 VectorLinkedList<T>::VectorLinkedList(): head(nullptr), size(0){};
@@ -69,12 +70,26 @@ void VectorLinkedList<T>::clear(){
     head = nullptr;
     size = 0;
 }
+
 template<typename T>
 typename VectorLinkedList<T>:: Iterator VectorLinkedList<T>::begin() const{
     return Iterator(head);
 }
+
 template<typename T>
 typename VectorLinkedList<T>:: Iterator VectorLinkedList<T>::end() const{
     return Iterator(nullptr);
+}
+
+template<typename T>
+T& VectorLinkedList<T>:: operator[](size_t index){
+    if (index >= size){
+        throw out_of_range("Index out of bounds");
+    }
+    Node* current = head;
+    for(size_t i=0; i<index; i++){
+        current = current->next;
+    }
+    return current->data;
 }
 template class VectorLinkedList<AirQuality>;
