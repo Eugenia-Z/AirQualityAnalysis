@@ -51,7 +51,7 @@ ostream & operator <<( ostream & os, const AirQuality & air )
 {
     os<<air.getDate()<<" " <<air.getTime()<<" "
       <<"Temperature: "<< fixed << setprecision(1) << air.getTemp()
-      <<" Relative humidity: "<< setprecision(1)<< air.getRH()
+      <<" Relative Humidity: "<< setprecision(1)<< air.getRH()
       <<" Absolute humidity: "<< setprecision(4)<< air.getAH() << endl;
     return os;
 }
