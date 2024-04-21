@@ -26,7 +26,6 @@ public:
     double getAvgRH() const;
     double getAvgAH() const;
     void setMonth(const Date &d);
-
     // Methods
     bool isEmpty() const;
     void push(const AirQuality &a);
