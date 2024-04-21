@@ -32,7 +32,7 @@ public:
 
 private:
     // MonthlyData stored in a vector
-    VectorLinkedList<MonthlyData> monthData;
+    VectorLinkedList<MonthlyData> monthDataCollection;
 
     // Private helper validating double value in input
     bool doubleValidator(const string& doubleString);

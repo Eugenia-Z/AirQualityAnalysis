@@ -53,13 +53,13 @@ void AirQualityAnalyzer::readCSV(const std::string &fileName) {
 
         AirQuality air(date, time, temperature, rh, ah);
         // Store the data into MonthlyData instance
-        if (!monthData.empty() && monthData[monthData.getSize() - 1].getMonth().sameMonth(date)) {
-            monthData[monthData.getSize() - 1].push(air);
+        if (!monthDataCollection.empty() && monthDataCollection[monthDataCollection.getSize() - 1].getMonth().sameMonth(date)) {
+            monthDataCollection[monthDataCollection.getSize() - 1].push(air);
         } else {
             // if the date does not belong to current month
-            monthData.push_back(MonthlyData());
-            monthData[monthData.getSize() - 1].push(air);
-            monthData[monthData.getSize() - 1].setMonth(date);
+            monthDataCollection.push_back(MonthlyData());
+            monthDataCollection[monthDataCollection.getSize() - 1].push(air);
+            monthDataCollection[monthDataCollection.getSize() - 1].setMonth(date);
         }
     }
     inFile.close();
@@ -156,7 +156,7 @@ void AirQualityAnalyzer::displayMonthHigherThanAvgAH() const {
 void AirQualityAnalyzer::displayDataAtDate() const {
     cout << "You are trying to know the air quality data at the specific time of a day." << endl;
     Date date = processInputDate();
-    for (auto &it : monthData) {
+    for (auto &it : monthDataCollection) {
         if (it.getMonth().sameMonth(date)) {
             Time time = processInputTime();
             time.setMinute(0);
@@ -183,7 +183,7 @@ MonthlyData* AirQualityAnalyzer::processInputMonth() const {
     Date findDay(year, month, day);
 
     MonthlyData* target = nullptr;
-    for (auto &m : monthData) {
+    for (auto &m : monthDataCollection) {
         if (m.getMonth().sameMonth(findDay)) {
             cout << "Loading data for " << m.getMonthString() << endl;
             target = &m;
@@ -211,30 +211,30 @@ Time AirQualityAnalyzer::processInputTime() const {
 // Get and print all the average value for each month
 void AirQualityAnalyzer::printAllAvg() const {
     cout << "------------Average Temperature------------" << endl;
-    for (auto &m : monthData)
+    for (auto &m : monthDataCollection)
         cout << m.getMonthString() << " " << fixed << setprecision(2) << m.getAvgTemp() << endl;
 
     cout << "------------Average RH------------" << endl;
-    for (auto &m : monthData)
+    for (auto &m : monthDataCollection)
         cout << m.getMonthString() << " " << fixed << setprecision(2) << m.getAvgRH() << endl;
 
     cout << "------------Average AH------------" << endl;
-    for (auto &m : monthData)
+    for (auto &m : monthDataCollection)
         cout << m.getMonthString() << " " << fixed << setprecision(2) << m.getAvgAH() << endl;
 }
 
 // Get and print all the highest value for each month
 void AirQualityAnalyzer::printAllMax() const {
     cout << "------------Max Temperature------------" << endl;
-    for (auto &m : monthData)
+    for (auto &m : monthDataCollection)
         cout << m.getMonthString() << " " << fixed << setprecision(2) << m.getMaxTemp() << endl;
 
     cout << "------------Max RH------------" << endl;
-    for (auto &m : monthData)
+    for (auto &m : monthDataCollection)
         cout << m.getMonthString() << " " << fixed << setprecision(2) << m.getMaxRH() << endl;
 
     cout << "------------Max AH------------" << endl;
-    for (auto &m : monthData)
+    for (auto &m : monthDataCollection)
         cout << m.getMonthString() << " " << fixed << setprecision(2) << m.getMaxAH() << endl;
 }
 
