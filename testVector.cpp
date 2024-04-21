@@ -2,7 +2,6 @@
 #include "Time.h"
 #include "Date.h"
 #include "AirQuality.h"
-#include "MonthlyData.h"
 #include <stdexcept>
 #include <iostream>
 using namespace std;
@@ -41,6 +40,7 @@ int main()
     vec[0] = AirQuality(Date(2004, 12, 29), Time(10, 0, 0),
                         20.0, 70.0, 0.03);
     cout << "Element at index 0 after modification: " << vec[0] << endl;
+    cout << vec[vec.getSize() - 1] << endl;
 
     // Test out-of-bounds access
     try

@@ -10,29 +10,38 @@
 #include "VectorLinkedList.h"
 using namespace std;
 
-int main(){
+int main() {
     AirQualityAnalyzer analyzer;
-    //test runAnalysis, readCSV, and doubleValidator
+
+    // test runAnalysis, readCSV, and doubleValidator
     analyzer.readCSV("../AirQualityUCI.csv");
-    //test printAllAvg
+
+    // test printAllAvg
     analyzer.printAllAvg();
     analyzer.printAllMax();
-    //print monthlyData of the ith month
-    analyzer.printMonth(0);
-    analyzer.printMonth(13);
-    //test user input
+
+    // print monthlyData
+    analyzer.printMonth();
+    analyzer.printMonth();
+
+    // test user input
+    cout << "test user input ..." << endl;
     analyzer.processInputMonth();
     analyzer.processInputDate();
     analyzer.processInputTime();
-    //test get and print data
-    analyzer.getMonthAvgTemp(6);
-    analyzer.getMonthAvgRH(6);
-    analyzer.getMonthAvgAH(6);
-    analyzer.getMonthMaxTemp(6);
-    analyzer.getMonthMaxRH(6);
-    analyzer.getMonthMaxAH(6);
-    analyzer.displayMonthHigherThanAvgTemp(6);
-    analyzer.displayMonthHigherThanAvgRH(6);
-    analyzer.displayMonthHigherThanAvgAH(6);
+
+    //  test get and print data
+    cout << "test get and print avg data...." << endl;
+    analyzer.printMonthAvgTemp();
+    analyzer.printMonthAvgRH();
+    analyzer.printMonthAvgAH();
+
+    cout << "test get and print max data...." << endl;
+    analyzer.printMonthMaxTemp();
+    analyzer.printMonthMaxRH();
+    analyzer.printMonthMaxAH();
+    analyzer.displayMonthHigherThanAvgTemp();
+    analyzer.displayMonthHigherThanAvgRH();
+    analyzer.displayMonthHigherThanAvgAH();
     analyzer.displayDataAtDate();
 }
