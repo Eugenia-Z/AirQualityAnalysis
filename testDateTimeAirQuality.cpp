@@ -81,9 +81,9 @@ int main()
         cout << "d2 is not later than d3"<< endl;
     }
     if(d3<d2){
-        cout << "d2 is earlier than d3"<< endl;
+        cout << "d3 is earlier than d2"<< endl;
     }else{
-        cout << "d2 is not earlier than d3"<< endl;
+        cout << "d3 is not earlier than d2"<< endl;
     }
 
     // Test operator<< and operator>> functions
