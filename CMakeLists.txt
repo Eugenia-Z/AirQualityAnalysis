@@ -6,15 +6,9 @@ set(CMAKE_CXX_STANDARD 17)
 add_executable(main main.cpp
         Time.cpp
         Date.cpp
-        Date.h
-        AirQuality.h
         AirQuality.cpp
-        MonthlyData.h
-        MonthlyData.cpp
-        AirQualityAnalyzer.h
-        AirQualityAnalyzer.cpp
-        VectorLinkedList.h
         VectorLinkedList.cpp
+        MonthlyData.cpp
         AirQualityAnalyzer.cpp
 )
 
@@ -24,25 +18,26 @@ add_executable(testDateTimeAirQuality testDateTimeAirQuality.cpp
         AirQuality.cpp
 )
 
-add_executable(testAirQualityAnalyzer testAirQualityAnalyzer.cpp
-        Time.cpp
-        Time.h
+add_executable(testVector testVector.cpp
         Date.cpp
-        Date.h
-        AirQuality.h
+        Time.cpp
         AirQuality.cpp
-        MonthlyData.h
-        MonthlyData.cpp
-        AirQualityAnalyzer.h
-        AirQualityAnalyzer.cpp
-        VectorLinkedList.h
         VectorLinkedList.cpp
 )
 
 add_executable(testMonthlyData testMonthlyData.cpp
-        VectorLinkedList.cpp
-        AirQuality.cpp
-        MonthlyData.cpp
         Time.cpp
         Date.cpp
-        AirQualityAnalyzer.cpp)
+        AirQuality.cpp
+        VectorLinkedList.cpp
+        MonthlyData.cpp
+)
+
+add_executable(testAirQualityAnalyzer testAirQualityAnalyzer.cpp
+        Time.cpp
+        Date.cpp
+        AirQuality.cpp
+        VectorLinkedList.cpp
+        MonthlyData.cpp
+        AirQualityAnalyzer.cpp
+)

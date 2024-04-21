@@ -4,6 +4,7 @@
 
 #include "VectorLinkedList.h"
 #include "AirQuality.h"
+#include "MonthlyData.h"
 using namespace std;
 
 template<typename T>
@@ -93,3 +94,4 @@ T& VectorLinkedList<T>:: operator[](size_t index){
     return current->data;
 }
 template class VectorLinkedList<AirQuality>;
+template class VectorLinkedList<MonthlyData>;

@@ -1,30 +1,24 @@
 #include "AirQualityAnalyzer.h"
-#include "AirQualityAnalyzer.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <iomanip>
 
-// read input
-void AirQualityAnalyzer::readCSV(const std::string &fileName)
-{
+// Read input and store data
+void AirQualityAnalyzer::readCSV(const std::string &fileName) {
     ifstream inFile;
     string line;
     inFile.open(fileName);
 
     if (!inFile)
-    {
         cout << "fail to open the file" << endl;
-    }
     getline(inFile, line);
 
-    while (getline(inFile, line))
-    {
-        // stop read CSV when get a line start with ","
+    while (getline(inFile, line)) {
+        // Stop read CSV when get a line start with ","
         if (line[0] == ',')
-        {
             break;
-        }
+
         stringstream ss(line);
         string dateString, timeString, temperatureString, rhString, ahString;
         double temperature, rh, ah;
@@ -36,117 +30,147 @@ void AirQualityAnalyzer::readCSV(const std::string &fileName)
         Time time(timeString);
 
         for (int i = 0; i < 10; ++i)
-        {
             ss.ignore(numeric_limits<streamsize>::max(), ',');
-        }
+
 
         getline(ss, temperatureString, ',');
-        if (doubleValidator(temperatureString) && stod(temperatureString) > -199)
-        {
+        if (doubleValidator(temperatureString) && stod(temperatureString) > 0)
             temperature = stod(temperatureString);
-        }
         else
-        {
-            temperature = NULL;
-        }
+            temperature = 0.0;
 
         getline(ss, rhString, ',');
-        if (doubleValidator(rhString) && stod(rhString) > -199)
-        {
+        if (doubleValidator(rhString) && stod(rhString) > 0)
             rh = stod(rhString);
-        }
         else
-        {
-            rh = NULL;
-        }
+            rh = 0.0;
 
         getline(ss, ahString, ',');
-        if (doubleValidator(ahString) && stod(ahString) > -199)
-        {
+        if (doubleValidator(ahString) && stod(ahString) > 0)
             ah = stod(ahString);
-        }
         else
-        {
-            ah = NULL;
-        }
-        AirQuality air(date, time, temperature, rh, ah);
+            ah = 0.0;
 
-        // store the data into MonthlyData instance
-        if (monthsIndex >= 0 && months[monthsIndex].getMonth().sameMonth(date))
-        { // if the date belongs to this month, store it to the month
-            months[monthsIndex].push(air);
-        }
-        else
-        { // if the date does not belong to current month
-            months[++monthsIndex].setMonth(date);
-            months[monthsIndex].push(air);
+        AirQuality air(date, time, temperature, rh, ah);
+        // Store the data into MonthlyData instance
+        if (!monthData.empty() && monthData[monthData.getSize() - 1].getMonth().sameMonth(date)) {
+            monthData[monthData.getSize() - 1].push(air);
+        } else {
+            // if the date does not belong to current month
+            monthData.push_back(MonthlyData());
+            monthData[monthData.getSize() - 1].push(air);
+            monthData[monthData.getSize() - 1].setMonth(date);
         }
     }
     inFile.close();
 }
-// validate double value in input
-bool AirQualityAnalyzer::doubleValidator(const string &doubleString)
-{
-    stringstream ss(doubleString);
-    double value;
-    ss >> value;
-    if (ss.fail() || ss.peek() != EOF)
-    {
-        return false;
-    }
-    return true;
+
+// Get and print data
+void AirQualityAnalyzer::printMonthAvgTemp() const {
+    cout << "You are trying to know the average temperature for a month. \n";
+    MonthlyData* targetMonth = processInputMonth();
+    if (targetMonth == nullptr)
+        cout << "Input month is out of range." << endl;
+    else
+        cout << "The average temperature for this month: " << fixed
+             << setprecision(2) << targetMonth->getAvgTemp() << endl;
 }
-// get and print data of all the average
-void AirQualityAnalyzer::printAllAvg() const
-{
-    cout << "------------avg temperature------------" << endl;
-    for (int i = 0; i < NUM_MONTHS; i++)
-    {
-        cout << i << " month: " << fixed << setprecision(2) << months[i].getAvgTemp() << endl;
-    }
-    cout << "------------avg rh------------" << endl;
-    for (int i = 0; i < NUM_MONTHS; i++)
-    {
-        cout << i << " month: " << fixed << setprecision(2) << months[i].getAvgRH() << endl;
-    }
-    cout << "------------avg ah------------" << endl;
-    for (int i = 0; i < NUM_MONTHS; i++)
-    {
-        cout << i << " month: " << fixed << setprecision(2) << months[i].getAvgAH() << endl;
-    }
+
+void AirQualityAnalyzer::printMonthAvgRH() const {
+    cout << "You are trying to know the average relative humidity for a month. \n";
+    MonthlyData* targetMonth = processInputMonth();
+    if (targetMonth == nullptr)
+        cout << "Input month is out of range." << endl;
+    else
+        cout << "The average relative humidity for this month: " << fixed
+             << setprecision(2) << targetMonth->getAvgRH() << endl;
 }
-// get and print data of all the max
-void AirQualityAnalyzer::printAllMax() const
-{
-    cout << "------------max temperature------------" << endl;
-    for (int i = 0; i < NUM_MONTHS; i++)
-    {
-        cout << i << " month: " << fixed << setprecision(2) << months[i].getMaxTemp() << endl;
-    }
-    cout << "------------max rh------------" << endl;
-    for (int i = 0; i < NUM_MONTHS; i++)
-    {
-        cout << i << " month: " << fixed << setprecision(2) << months[i].getMaxRH() << endl;
-    }
-    cout << "------------max ah------------" << endl;
-    for (int i = 0; i < NUM_MONTHS; i++)
-    {
-        cout << i << " month: " << fixed << setprecision(2) << months[i].getMaxAH() << endl;
-    }
+
+void AirQualityAnalyzer::printMonthAvgAH() const {
+    cout << "You are trying to know the average absolute humidity for a month. \n";
+    MonthlyData* targetMonth = processInputMonth();
+    if (targetMonth == nullptr)
+        cout << "Input month is out of range." << endl;
+    else
+        cout << "The average absolute humidity for this month: " << fixed
+             << setprecision(2) << targetMonth->getAvgAH() << endl;
 }
-// get and print data of a month
-void AirQualityAnalyzer::printMonth(int i)
-{
-    if (i >= NUM_MONTHS)
-    {
-        throw "month index out of range";
-    }
-    cout << "------------monthly data ------------" << endl;
-    months[i].print();
+
+void AirQualityAnalyzer::printMonthMaxTemp() const {
+    cout << "You are trying to know the highest temperature for a month. \n";
+    MonthlyData* targetMonth = processInputMonth();
+    if (targetMonth == nullptr)
+        cout << "Input month is out of range." << endl;
+    else
+        cout << "The highest temperature for this month: " << fixed
+             << setprecision(2) << targetMonth->getMaxTemp() << endl;
 }
-// deal with user input
-int AirQualityAnalyzer::processInputMonth()
-{
+
+void AirQualityAnalyzer::printMonthMaxRH() const {
+    cout << "You are trying to know the highest relative humidity for a month. \n";
+    MonthlyData* targetMonth = processInputMonth();
+    if (targetMonth == nullptr)
+        cout << "Input month is out of range." << endl;
+    else
+        cout << "The highest relative humidity for this month: " << fixed
+             << setprecision(2) << targetMonth->getMaxRH() << endl;
+}
+
+void AirQualityAnalyzer::printMonthMaxAH() const {
+    cout << "You are trying to know the highest absolute humidity for a month. \n";
+    MonthlyData* targetMonth = processInputMonth();
+    if (targetMonth == nullptr)
+        cout << "Input month is out of range." << endl;
+    else
+        cout << "The highest absolute humidity for this month: " << fixed
+             << setprecision(2) << targetMonth->getMaxAH() << endl;
+}
+
+void AirQualityAnalyzer::displayMonthHigherThanAvgTemp() const {
+    cout << "You are trying to know the dates and times for a month when the temperature is higher than the average. \n";
+    MonthlyData* targetMonth = processInputMonth();
+    if (targetMonth == nullptr)
+        cout << "Input month is out of range." << endl;
+    else
+        targetMonth->displayHigherThanAvgTemp();
+}
+
+void AirQualityAnalyzer::displayMonthHigherThanAvgRH() const {
+    cout << "You are trying to know the dates and times for a month when the relative humidity is higher than the average.\n";
+    MonthlyData* targetMonth = processInputMonth();
+    if (targetMonth == nullptr)
+        cout << "Input month is out of range." << endl;
+    else
+        targetMonth->displayHigherThanAvgRH();
+}
+
+void AirQualityAnalyzer::displayMonthHigherThanAvgAH() const {
+    cout << "You are trying to know the dates and times for a month when the absolute humidity is higher than the average.\n";
+    MonthlyData* targetMonth = processInputMonth();
+    if (targetMonth == nullptr)
+        cout << "Input month is out of range." << endl;
+    else
+        targetMonth->displayHigherThanAvgAH();
+}
+
+void AirQualityAnalyzer::displayDataAtDate() const {
+    cout << "You are trying to know the air quality data at the specific time of a day." << endl;
+    Date date = processInputDate();
+    for (auto &it : monthData) {
+        if (it.getMonth().sameMonth(date)) {
+            Time time = processInputTime();
+            time.setMinute(0);
+            time.setSecond(0);
+            cout << "Loading data for " << date << " " << time << endl;
+            it.displayDataAt(date, time);
+            return;
+        }
+    }
+    cout << "Input Date and Time Invalid." << endl;
+}
+
+// Deal with user input: month
+MonthlyData* AirQualityAnalyzer::processInputMonth() const {
     string input;
     cout << "Please enter the month (yyyy/mm): ";
     cin >> input;
@@ -158,90 +182,79 @@ int AirQualityAnalyzer::processInputMonth()
     iss >> year >> delimiter >> month >> delimiter >> day;
     Date findDay(year, month, day);
 
-    cout << "Loading data for " << findDay.getYear() << "/" << findDay.getMonth() << endl;
-
-    int i;
-    for (i = 0; i < NUM_MONTHS; i++)
-    {
-        if (months[i].getMonth().sameMonth(findDay))
-        {
-            return i;
+    MonthlyData* target = nullptr;
+    for (auto &m : monthData) {
+        if (m.getMonth().sameMonth(findDay)) {
+            cout << "Loading data for " << m.getMonthString() << endl;
+            target = &m;
         }
     }
-    cin.ignore();
-    return -1;
+    return target;
 }
-// deal with input a date
-Date AirQualityAnalyzer::processInputDate()
-{
+
+// Deal with input: Date
+Date AirQualityAnalyzer::processInputDate() const {
     Date findDay;
-    cout << "Please enter the date (yyyy/mm/dd):";
+    cout << "Please enter the date (yyyy/mm/dd): ";
     cin >> findDay;
     return findDay;
 }
-// deal with input a time
-Time AirQualityAnalyzer::processInputTime()
-{
+
+// Deal with input: Time
+Time AirQualityAnalyzer::processInputTime() const {
     Time findTime;
-    cout << "Please enter the time (hh:mm:ss):";
+    cout << "Please enter the time (hh:mm:ss): ";
     cin >> findTime;
     return findTime;
 }
-// get and print data
-double AirQualityAnalyzer::getMonthAvgTemp(int index)
-{
-    return months[index].getAvgTemp();
+
+// Get and print all the average value for each month
+void AirQualityAnalyzer::printAllAvg() const {
+    cout << "------------Average Temperature------------" << endl;
+    for (auto &m : monthData)
+        cout << m.getMonthString() << " " << fixed << setprecision(2) << m.getAvgTemp() << endl;
+
+    cout << "------------Average RH------------" << endl;
+    for (auto &m : monthData)
+        cout << m.getMonthString() << " " << fixed << setprecision(2) << m.getAvgRH() << endl;
+
+    cout << "------------Average AH------------" << endl;
+    for (auto &m : monthData)
+        cout << m.getMonthString() << " " << fixed << setprecision(2) << m.getAvgAH() << endl;
 }
-double AirQualityAnalyzer::getMonthAvgRH(int index)
-{
-    return months[index].getAvgRH();
+
+// Get and print all the highest value for each month
+void AirQualityAnalyzer::printAllMax() const {
+    cout << "------------Max Temperature------------" << endl;
+    for (auto &m : monthData)
+        cout << m.getMonthString() << " " << fixed << setprecision(2) << m.getMaxTemp() << endl;
+
+    cout << "------------Max RH------------" << endl;
+    for (auto &m : monthData)
+        cout << m.getMonthString() << " " << fixed << setprecision(2) << m.getMaxRH() << endl;
+
+    cout << "------------Max AH------------" << endl;
+    for (auto &m : monthData)
+        cout << m.getMonthString() << " " << fixed << setprecision(2) << m.getMaxAH() << endl;
 }
-double AirQualityAnalyzer::getMonthAvgAH(int index)
-{
-    return months[index].getAvgAH();
-}
-double AirQualityAnalyzer::getMonthMaxTemp(int index)
-{
-    return months[index].getMaxTemp();
-}
-double AirQualityAnalyzer::getMonthMaxRH(int index)
-{
-    return months[index].getMaxRH();
-}
-double AirQualityAnalyzer::getMonthMaxAH(int index)
-{
-    return months[index].getMaxAH();
-}
-void AirQualityAnalyzer::displayMonthHigherThanAvgTemp(int index)
-{
-    months[index].displayHigherThanAvgTemp();
-}
-void AirQualityAnalyzer::displayMonthHigherThanAvgRH(int index)
-{
-    months[index].displayHigherThanAvgRH();
-}
-void AirQualityAnalyzer::displayMonthHigherThanAvgAH(int index)
-{
-    months[index].displayHigherThanAvgAH();
-}
-void AirQualityAnalyzer::displayDataAtDate()
-{
-    Date date = processInputDate();
-    int i;
-    for (i = 0; i < NUM_MONTHS; i++)
-    {
-        if (months[i].getMonth().sameMonth(date))
-        {
-            Time time = processInputTime();
-            time.setMinute(0);
-            time.setSecond(0);
-            cout << "Loading data for " << date << " " << time << endl;
-            months[i].displayDataAt(date, time);
-            break;
-        }
+
+// Get and print data of a given month
+void AirQualityAnalyzer::printMonth() const {
+    MonthlyData* targetMonth = processInputMonth();
+    if (targetMonth != nullptr) {
+        cout << "------------monthly data ------------" << endl;
+        targetMonth->print();
+    } else {
+        cout << "Input month is out of range." << endl;
     }
-    if (i == NUM_MONTHS)
-    {
-        cout << "Input Date and Time Invalid." << endl;
-    }
+}
+
+// Validate double value in input
+bool AirQualityAnalyzer::doubleValidator(const string &doubleString) {
+    stringstream ss(doubleString);
+    double value;
+    ss >> value;
+    if (ss.fail() || ss.peek() != EOF)
+        return false;
+    return true;
 }
