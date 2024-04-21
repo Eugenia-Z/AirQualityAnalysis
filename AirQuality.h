@@ -1,42 +1,39 @@
-#include <iostream>
-#include <string>
-#include "Date.h"
-#include "Time.h"
-using namespace std;
-
 #ifndef FINAL_PROJECT_AIRQUALITY_H
 #define FINAL_PROJECT_AIRQUALITY_H
+#include "Date.h"
+#include "Time.h"
+
 
 class AirQuality {
+    // Overload operator <<
+    friend ostream& operator<<(ostream&, const AirQuality&);
+
 public:
-    //default constructor
-    AirQuality();
+    // Default constructor and destructor
+    AirQuality() = default;
+    ~AirQuality() = default;
 
-    //specific constructor
-    AirQuality (Date d, Time t, double temperature, double relativeHumidity, double absoluteHumidity);
+    // Parameterized constructor
+    AirQuality(const Date& d, const Time& t, double tmp, double rh, double ah);
 
-    //setters
-    void setAirQuality (Date d, Time t, double temperature, double relativeHumidity, double absoluteHumidity);
-    void setDate (Date d);
-    void setTime (Time t);
+    // Setters
+    void setAirQuality(const Date& d, const Time& t, double tmp, double rh, double ah);
+    void setDate(const Date& d);
+    void setTime(const Time& t);
 
-    //getters
-    AirQuality getAirQuality () const;
-    Date getDate () const;
-    Time getTime () const;
+    // Getters
+    Date getDate() const;
+    Time getTime() const;
     double getTemp() const;
     double getRH() const;
     double getAH() const;
 
 private:
-    Date date; //date
-    Time time; //time
-    double temp; //temperature
-    double RH; //relative humidity
-    double AH; //absolute humidity
+    Date date; // Date
+    Time time; // Time
+    double temp; // Temperature
+    double RH; // Relative humidity
+    double AH; // Absolute humidity
 };
-
-ostream & operator <<( ostream & os, const AirQuality & air );
-//istream & operator >>( istream & input, Time & T );
 
 #endif //FINAL_PROJECT_AIRQUALITY_H

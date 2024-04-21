@@ -1,68 +1,56 @@
-#include <iostream>
 #include <iomanip>
 #include "AirQuality.h"
 #include "Date.h"
 #include "Time.h"
 
-using namespace std;
-
-//default constructor
-AirQuality::AirQuality(){}
-
-//specific constructor
-AirQuality::AirQuality (Date d, Time ti, double temperature, double relativeHumidity, double absoluteHumidity){
-    setAirQuality(d,ti, temperature, relativeHumidity, absoluteHumidity);
+// Parameterized constructor
+AirQuality::AirQuality(const Date& d, const Time& t, double tmp, double rh, double ah) {
+    setAirQuality(d, t, tmp, rh, ah);
 }
 
-//setters
-void AirQuality::setAirQuality (Date d, Time ti, double temperature, double relativeHumidity, double absoluteHumidity){
+// Setters
+void AirQuality::setAirQuality(const Date& d, const Time& t, double tmp, double rh, double ah) {
     setDate(d);
-    setTime(ti);
-    temp = temperature;
-    RH = relativeHumidity;
-    AH = absoluteHumidity;
+    setTime(t);
+    temp = tmp;
+    RH = rh;
+    AH = ah;
 }
-void AirQuality::setDate (Date d){
+
+void AirQuality::setDate(const Date& d) {
     date = d;
 }
-void AirQuality::setTime (Time t){
+
+void AirQuality::setTime(const Time& t) {
     time = t;
 }
-//getters
-AirQuality AirQuality::getAirQuality() const{
-    return *this;
-}
-Date AirQuality::getDate () const{
+
+// Getters
+Date AirQuality::getDate() const {
     return date;
 }
-Time AirQuality::getTime () const{
+
+Time AirQuality::getTime() const {
     return time;
 }
-double AirQuality::getTemp() const{
+
+double AirQuality::getTemp() const {
     return temp;
 }
-double AirQuality::getRH() const{
+
+double AirQuality::getRH() const {
     return RH;
 }
-double AirQuality::getAH() const{
+
+double AirQuality::getAH() const {
     return AH;
 }
-ostream & operator <<( ostream & os, const AirQuality & air )
-{
-    os<<air.getDate()<<" " <<air.getTime()<<" "
-      <<"Temperature: "<< fixed << setprecision(1) << air.getTemp()
-      <<" Relative Humidity: "<< setprecision(1)<< air.getRH()
-      <<" Absolute humidity: "<< setprecision(4)<< air.getAH() << endl;
+
+// Overload operator <<
+ostream& operator<<(ostream& os, const AirQuality& air) {
+    os << air.getDate() << " " << air.getTime() << " "
+       << "Temperature: " << fixed << setprecision(1) << air.getTemp()
+       << " Relative Humidity: " << setprecision(1) << air.getRH()
+       << " Absolute humidity: " << setprecision(4) << air.getAH() << endl;
     return os;
 }
-// override cin and cout
-//istream & operator >>( istream & input, AirQuality & air )
-//{
-//    string time,sHH;
-//    int hh;
-//
-//    hh=stoi(sHH);
-//
-//    air.setAirQuality(hh);
-//    return input;
-//}
