@@ -6,7 +6,8 @@
 /**
  * @class MonthlyData
  * @brief Manages monthly data for air quality.
- * This class represents monthly air quality data, including temperature, relative humidity, and absolute humidity.
+ * This class represents monthly air quality data, including temperature,
+ * relative humidity, and absolute humidity.
  * It provides methods to add data, calculate statistics, and display information.
  */
 class MonthlyData {
