@@ -1,8 +1,6 @@
 #include "AirQualityAnalyzer.h"
-#include <iostream>
 #include <fstream>
 #include <sstream>
-#include <iomanip>
 
 // Read input and store data
 void AirQualityAnalyzer::readCSV(const std::string &fileName) {
@@ -53,7 +51,8 @@ void AirQualityAnalyzer::readCSV(const std::string &fileName) {
 
         AirQuality air(date, time, temperature, rh, ah);
         // Store the data into MonthlyData instance
-        if (!monthDataCollection.empty() && monthDataCollection[monthDataCollection.getSize() - 1].getMonth().sameMonth(date)) {
+        if (!monthDataCollection.empty() &&
+            monthDataCollection[monthDataCollection.getSize() - 1].getMonth().sameMonth(date)) {
             monthDataCollection[monthDataCollection.getSize() - 1].push(air);
         } else {
             // if the date does not belong to current month
@@ -67,7 +66,7 @@ void AirQualityAnalyzer::readCSV(const std::string &fileName) {
 
 // Get and print data
 void AirQualityAnalyzer::printMonthAvgTemp() const {
-    cout << "You are trying to know the average temperature for a month. \n";
+    cout << "You are trying to know the average temperature for a month." << endl;
     MonthlyData* targetMonth = processInputMonth();
     if (targetMonth == nullptr)
         cout << "Input month is out of range." << endl;
@@ -77,7 +76,7 @@ void AirQualityAnalyzer::printMonthAvgTemp() const {
 }
 
 void AirQualityAnalyzer::printMonthAvgRH() const {
-    cout << "You are trying to know the average relative humidity for a month. \n";
+    cout << "You are trying to know the average relative humidity for a month." << endl;
     MonthlyData* targetMonth = processInputMonth();
     if (targetMonth == nullptr)
         cout << "Input month is out of range." << endl;
@@ -87,7 +86,7 @@ void AirQualityAnalyzer::printMonthAvgRH() const {
 }
 
 void AirQualityAnalyzer::printMonthAvgAH() const {
-    cout << "You are trying to know the average absolute humidity for a month. \n";
+    cout << "You are trying to know the average absolute humidity for a month." << endl;
     MonthlyData* targetMonth = processInputMonth();
     if (targetMonth == nullptr)
         cout << "Input month is out of range." << endl;
@@ -97,7 +96,7 @@ void AirQualityAnalyzer::printMonthAvgAH() const {
 }
 
 void AirQualityAnalyzer::printMonthMaxTemp() const {
-    cout << "You are trying to know the highest temperature for a month. \n";
+    cout << "You are trying to know the highest temperature for a month." << endl;
     MonthlyData* targetMonth = processInputMonth();
     if (targetMonth == nullptr)
         cout << "Input month is out of range." << endl;
@@ -107,7 +106,7 @@ void AirQualityAnalyzer::printMonthMaxTemp() const {
 }
 
 void AirQualityAnalyzer::printMonthMaxRH() const {
-    cout << "You are trying to know the highest relative humidity for a month. \n";
+    cout << "You are trying to know the highest relative humidity for a month." << endl;
     MonthlyData* targetMonth = processInputMonth();
     if (targetMonth == nullptr)
         cout << "Input month is out of range." << endl;
@@ -117,7 +116,7 @@ void AirQualityAnalyzer::printMonthMaxRH() const {
 }
 
 void AirQualityAnalyzer::printMonthMaxAH() const {
-    cout << "You are trying to know the highest absolute humidity for a month. \n";
+    cout << "You are trying to know the highest absolute humidity for a month." << endl;
     MonthlyData* targetMonth = processInputMonth();
     if (targetMonth == nullptr)
         cout << "Input month is out of range." << endl;
@@ -127,7 +126,8 @@ void AirQualityAnalyzer::printMonthMaxAH() const {
 }
 
 void AirQualityAnalyzer::displayMonthHigherThanAvgTemp() const {
-    cout << "You are trying to know the dates and times for a month when the temperature is higher than the average. \n";
+    cout << "You are trying to know the dates and times for a month when the"
+            " temperature is higher than the average." << endl;
     MonthlyData* targetMonth = processInputMonth();
     if (targetMonth == nullptr)
         cout << "Input month is out of range." << endl;
@@ -136,7 +136,8 @@ void AirQualityAnalyzer::displayMonthHigherThanAvgTemp() const {
 }
 
 void AirQualityAnalyzer::displayMonthHigherThanAvgRH() const {
-    cout << "You are trying to know the dates and times for a month when the relative humidity is higher than the average.\n";
+    cout << "You are trying to know the dates and times for a month when the "
+            "relative humidity is higher than the average." << endl;
     MonthlyData* targetMonth = processInputMonth();
     if (targetMonth == nullptr)
         cout << "Input month is out of range." << endl;
@@ -145,7 +146,8 @@ void AirQualityAnalyzer::displayMonthHigherThanAvgRH() const {
 }
 
 void AirQualityAnalyzer::displayMonthHigherThanAvgAH() const {
-    cout << "You are trying to know the dates and times for a month when the absolute humidity is higher than the average.\n";
+    cout << "You are trying to know the dates and times for a month when"
+            " the absolute humidity is higher than the average" << endl;
     MonthlyData* targetMonth = processInputMonth();
     if (targetMonth == nullptr)
         cout << "Input month is out of range." << endl;
@@ -187,6 +189,7 @@ MonthlyData* AirQualityAnalyzer::processInputMonth() const {
         if (m.getMonth().sameMonth(findDay)) {
             cout << "Loading data for " << m.getMonthString() << endl;
             target = &m;
+            break;
         }
     }
     return target;

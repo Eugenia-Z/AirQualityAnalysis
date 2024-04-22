@@ -1,12 +1,4 @@
-#include <iostream>
-#include <vector>
-#include "AirQuality.h"
-#include "Date.h"
 #include "MonthlyData.h"
-#include "Time.h"
-
-
-using namespace std;
 
 int main() {
     // Test constructor, isEmpty() and getSize()
@@ -52,7 +44,6 @@ int main() {
     thisMonth.displayDataAt(Date(0,12,2004), Time (0,0,0));
     thisMonth.displayDataAt(Date(2004, 12, 2), Time(14, 0, 0));
     thisMonth.displayDataAt(Date(2004, 12, 2), Time(14, 0, 0));
-
 
     cout << "Testing printSummary()" << endl;
     thisMonth.printSummary();

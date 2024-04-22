@@ -1,13 +1,9 @@
 #include "VectorLinkedList.h"
-#include "Time.h"
-#include "Date.h"
 #include "AirQuality.h"
-#include <stdexcept>
-#include <iostream>
+
 using namespace std;
 
-int main()
-{
+int main() {
     // Create an empty VectorLinkedList
     VectorLinkedList<AirQuality> vec;
     // Test isEmpty() on an empty VectorLinkedList AND MonthlyData
@@ -26,7 +22,6 @@ int main()
     vec.push_back(aq1);
     vec.push_back(aq2);
 
-
     // Test empty() on a non-empty VectorLinkedList
     cout << "Is VectorLinkedList empty? " << (vec.empty() ? "Yes" : "No") << endl;
 
@@ -43,12 +38,10 @@ int main()
     cout << vec[vec.getSize() - 1] << endl;
 
     // Test out-of-bounds access
-    try
-    {
+    try {
         cout << "Attempting to access out-of-bounds element: " << vec[1] << endl;
     }
-    catch (const out_of_range &e)
-    {
+    catch (const out_of_range &e) {
         cout << "Caught out-of-range exception: " << e.what() << endl;
     }
 
@@ -68,8 +61,7 @@ int main()
 
     // Test Iterator
     cout << "Elements in the vec: " << endl;
-    for (VectorLinkedList<AirQuality>::Iterator it = vec.begin(); it != vec.end(); ++it)
-    {
+    for (VectorLinkedList<AirQuality>::Iterator it = vec.begin(); it != vec.end(); ++it) {
         std::cout << *it << " ";
     }
 

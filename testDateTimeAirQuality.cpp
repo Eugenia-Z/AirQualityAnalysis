@@ -1,17 +1,12 @@
-#include <iostream>
-#include "Time.h"
-#include "Date.h"
 #include "AirQuality.h"
-using namespace std;
 
-int main()
-{
+int main() {
     //----------------test Time class------------------
     // create instances
     Time t1;
     Time t2(11, 11, 11);
     Time t3(11, 11, 11);
-    Time t4(22,00,00);
+    Time t4(22, 00, 00);
 
     // test cin and cout
     cout << "Enter time (hh:mm:ss): ";
@@ -19,25 +14,22 @@ int main()
     cout << "Time entered: " << t1 << std::endl;
 
     // Testing the operator==()
-    if (t2 == t3){
+    if (t2 == t3)
         cout << "t1 and t2 are equal." << std::endl;
-    }else{
+    else
         cout << "t1 and t2 are not equal." << std::endl;
-    }
 
     // testing the operator >
-    if (t4 > t3){
+    if (t4 > t3)
         cout << "t4 is later than t3." << std::endl;
-    }else{
+    else
         cout << "t4 is not later than t3." << std::endl;
-    }
 
     // testing the operator <
-    if (t4 < t3){
+    if (t4 < t3)
         cout << "t4 is not later than t3." << std::endl;
-    }else{
+    else
         cout << "t4 is later than t3." << std::endl;
-    }
 
     //----------------test Date class------------------
     Date d1(2004, 12, 31);
@@ -60,31 +52,25 @@ int main()
 
     // Test sameMonth() function
     if (d2.sameMonth(d3))
-    {
         cout << "d2 is in the same month as d3. \n";
-    }
+
     if (!d1.sameMonth(d3))
-    {
         cout << "d1 is NOT in the same month as d3. \n";
-    }
 
     // Test operator==() function
     if (d3 == d4)
-    {
         cout << "d3 and d4 is the same day.\n";
-    }
 
     // Test comparison
-    if(d2>d3){
-        cout << "d2 is later than d3"<< endl;
-    }else{
-        cout << "d2 is not later than d3"<< endl;
-    }
-    if(d3<d2){
-        cout << "d3 is earlier than d2"<< endl;
-    }else{
-        cout << "d3 is not earlier than d2"<< endl;
-    }
+    if (d2 > d3)
+        cout << "d2 is later than d3" << endl;
+    else
+        cout << "d2 is not later than d3" << endl;
+
+    if (d3 < d2)
+        cout << "d3 is earlier than d2" << endl;
+    else
+        cout << "d3 is not earlier than d2" << endl;
 
     // Test operator<< and operator>> functions
     cout << "Enter a date (yyyy/mm/dd): ";

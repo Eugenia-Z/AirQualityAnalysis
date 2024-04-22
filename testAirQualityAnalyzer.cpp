@@ -1,14 +1,4 @@
-#include <iostream>
-#include <string>
-#include <sstream>
-#include <vector>
-#include "AirQuality.h"
-#include "Date.h"
-#include "MonthlyData.h"
-#include "Time.h"
 #include "AirQualityAnalyzer.h"
-#include "VectorLinkedList.h"
-using namespace std;
 
 int main() {
     AirQualityAnalyzer analyzer;

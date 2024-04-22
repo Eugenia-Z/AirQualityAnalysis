@@ -3,7 +3,6 @@
 #include "Date.h"
 #include "Time.h"
 
-
 class AirQuality {
     // Overload operator <<
     friend ostream& operator<<(ostream&, const AirQuality&);

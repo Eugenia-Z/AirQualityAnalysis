@@ -1,45 +1,46 @@
 //
 // Created by Eugenia Zhang on 4/14/24.
 //
-
 #ifndef FP_VECTORLINKEDLIST_H
 #define FP_VECTORLINKEDLIST_H
-
 #include <iostream>
 
 template<typename T>
 class VectorLinkedList {
 private:
-    struct Node{
+    struct Node {
         T data;
-        Node* next;
-        Node(const T& val):data(val), next(nullptr){}
+        Node *next;
+
+        Node(const T &val) : data(val), next(nullptr) {}
     };
 
-    Node* head;
+    Node *head;
     size_t size;
 
 public:
     // Nested Iterator class
-    class Iterator{
+    class Iterator {
     private:
-        Node* current;
-    public:
-        Iterator(Node* node): current(node){}
+        Node *current;
 
-        T& operator*() const{
+    public:
+        Iterator(Node *node) : current(node) {}
+
+        T& operator*() const {
             return current->data;
         }
 
-        Iterator& operator++(){
+        Iterator& operator++() {
             current = current->next;
             return *this;
         }
 
-        bool operator==(const Iterator& other)const{
+        bool operator==(const Iterator& other) const {
             return current == other.current;
         }
-        bool operator!=(const Iterator& other)const{
+
+        bool operator!=(const Iterator& other) const {
             return !(*this == other);
         }
     };
@@ -58,8 +59,5 @@ public:
     // [] operator overload
     T& operator[](size_t index);
 };
-
-
-
 
 #endif //FP_VECTORLINKEDLIST_H
