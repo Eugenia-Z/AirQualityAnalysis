@@ -166,7 +166,6 @@ VectorLinkedList<AirQuality> MonthlyData::higherThanAvgTemp() const {
     VectorLinkedList<AirQuality> higher;
     double avgT = getAvgTemp();
     for (auto &it : data) {
-        cout << "this step" << endl;
         if (it.getTemp() > avgT)
             higher.push_back(it);
     }
